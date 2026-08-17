@@ -1,0 +1,55 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# Local environment and secret files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+**/key.properties
+**/local.properties
+**/secrets.properties
+**/*.secrets.properties
+**/google-services.json
+**/*service-account*.json
+**/*service_account*.json
+**/serviceAccount*.json
+
+# Flutter and Dart generated files
+**/.dart_tool/
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.packages
+**/build/
+**/coverage/
+**/android/.gradle/
+
+# Mutable agent runtime data
+agent/runtime/
+agent/state/state.json
+
+# Personal walking data and local database exports
+local-data/
+*.gpx
+*.kml
+*.kmz
+*.sqlite
+*.sqlite3
+*.db
+*.db-*
+
+# Local logs and temporary files
+*.log
+*.tmp
+*.bak
