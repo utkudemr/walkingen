@@ -1,0 +1,11 @@
+{
+  "@@locale": "en",
+  "appTitle": "Walkingen",
+  "homeTitle": "Home",
+  "homeEmpty": "Your walking overview will appear here.",
+  "historyTitle": "History",
+  "historyEmpty": "Your completed walks will appear here.",
+  "profileTab": "Profile",
+  "profileSettingsTitle": "Profile and Settings",
+  "profileSettingsEmpty": "Profile and settings options will appear here."
+}
