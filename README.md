@@ -2,7 +2,7 @@
 
 A personal, local-first walking tracker for Android, built with Flutter.
 
-> **Project status:** Product discovery and technical planning. The Flutter application has not been scaffolded yet.
+> **Project status:** The Android Flutter foundation is scaffolded with localized Home, History, and Profile/Settings navigation. Walking, profile, persistence, maps, and tracking behavior remain planned.
 
 Walkingen is designed around a simple question: **am I walking consistently, and how is my activity changing over time?** It records deliberate walking sessions, draws the route on a map, keeps the history on the device, and compares recent activity with the user's own previous periods instead of enforcing an arbitrary fixed daily distance.
 
@@ -129,32 +129,34 @@ Relevant changes also require widget, integration, and Samsung S23 device eviden
 
 Commits follow [Conventional Commits](https://www.conventionalcommits.org/). Feature branches are intended to be squash-merged and deleted after verification.
 
-## Planned repository structure
+## Repository structure
 
 ```text
 walkingen/
-├─ app/                      # Flutter application
+├─ app/
+│  ├─ android/               # Android application configuration
+│  ├─ lib/                   # Flutter source and TR/EN localization
+│  └─ test/                  # Widget tests
 ├─ docs/
-│  ├─ product/              # Vision, scope, glossary
-│  ├─ domain/               # Walking and progress rules
-│  ├─ architecture/         # Data, background tracking, localization
-│  ├─ adr/                  # Architecture decision records
-│  └─ testing/              # Test strategy and device matrix
-├─ .github/                 # Pull request and CI configuration
-├─ AGENTS.md                # Binding instructions for coding agents
+│  ├─ product/mvp-scope.md
+│  ├─ domain/core-model.md
+│  ├─ adr/0001-flutter-foundation.md
+│  └─ testing/strategy.md
+├─ .github/
+│  ├─ workflows/             # Flutter verification and Gitleaks
+│  └─ pull_request_template.md
+├─ AGENTS.md                 # Binding instructions for coding agents
 └─ README.md
 ```
 
 ## Near-term roadmap
 
-1. Create the versioned product/domain documentation.
-2. Scaffold the Flutter application and test harness.
-3. Prove background GPS persistence and recovery on the Samsung Galaxy S23.
-4. Implement profile and local settings as the first end-to-end slice.
-5. Implement walking session lifecycle and route persistence.
-6. Add history, weekly activity, and personal trend comparison.
-7. Validate the MVP through real walks.
-8. Add local export/import as the first post-MVP capability.
+1. Prove background GPS persistence and recovery on the Samsung Galaxy S23.
+2. Implement profile and local settings as the first end-to-end slice.
+3. Implement walking session lifecycle and route persistence.
+4. Add history, weekly activity, and personal trend comparison.
+5. Validate the MVP through real walks.
+6. Add local export/import as the first post-MVP capability.
 
 ## Contributing
 

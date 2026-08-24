@@ -1,0 +1,11 @@
+{
+  "@@locale": "tr",
+  "appTitle": "Walkingen",
+  "homeTitle": "Ana Sayfa",
+  "homeEmpty": "Yürüyüşlerin burada başlayacak.",
+  "historyTitle": "Geçmiş",
+  "historyEmpty": "Tamamlanan yürüyüşlerin burada görünecek.",
+  "profileTab": "Profil",
+  "profileSettingsTitle": "Profil ve Ayarlar",
+  "profileSettingsEmpty": "Profil ve ayar seçenekleri burada görünecek."
+}
