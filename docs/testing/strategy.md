@@ -47,6 +47,20 @@ The initial workflow must:
    and push protection remain enabled for the public repository.
 9. Pin third-party workflow actions to reviewed commit SHAs.
 
+## Android tracking lifecycle matrix
+
+A production change that starts or owns Android location tracking must provide evidence for:
+
+1. Visible user action starts one location foreground service and an ongoing localized notification.
+2. Accepted points/checkpoints continue after Home/background.
+3. Accepted points/checkpoints continue while the screen is off.
+4. Removing the recent-apps card does not stop an active walk.
+5. UI navigation or widget disposal does not own or cancel the tracking stream.
+6. Force Stop halts the process and service; reopening detects the persisted unfinished session.
+7. Reboot does not auto-resume tracking; persisted active/paused state becomes `interrupted`.
+8. User-confirmed resume begins a new continuity segment without fabricating the missing interval.
+9. Emulator synthetic-location evidence is supplemented by the documented Samsung Galaxy S23 scenarios before production completion.
+
 ## TDD evidence
 
 Each production behavior starts with a focused failing test. The failure must be observed for the missing behavior before the minimum implementation is added. After each focused GREEN run, execute the full suite before refactoring.

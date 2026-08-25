@@ -8,6 +8,7 @@ These rules apply to every human or coding agent working in this repository.
 - Product intent and scope live under `docs/product/` once created.
 - Domain behavior lives under `docs/domain/` once created.
 - Architecture decisions live under `docs/adr/` once created.
+- Test strategy and device matrices live under `docs/testing/`.
 - Executable behavior is proven by tests.
 - Obsidian is the project dashboard, not the source of detailed technical behavior.
 

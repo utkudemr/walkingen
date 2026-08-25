@@ -141,7 +141,10 @@ walkingen/
 │  ├─ product/mvp-scope.md
 │  ├─ domain/core-model.md
 │  ├─ adr/0001-flutter-foundation.md
+│  ├─ adr/0002-android-foreground-location.md
 │  └─ testing/strategy.md
+├─ spikes/
+│  └─ 001-android-foreground-location/README.md  # Evidence; executable discarded
 ├─ .github/
 │  ├─ workflows/             # Flutter verification and Gitleaks
 │  └─ pull_request_template.md
