@@ -92,7 +92,7 @@ A foreground-service notification alone does not make a UI-owned stream safe. In
 3. Use localized ongoing notification text and declare Android 14+ location foreground-service permissions.
 4. Request only foreground precise/coarse location for the first production slice; do not request background location pre-emptively.
 5. Persist session state and accepted points/checkpoints transactionally in Drift during tracking.
-6. Stop tracking only on explicit pause/finish/interruption domain transitions, never on navigation or widget disposal.
+6. Stop movement-contributing observations only on explicit pause; keep the foreground service and session notification alive until finish or interruption. Navigation and widget disposal must never change tracking ownership.
 7. On app startup, compare persisted `active/paused` state with actual service presence. If continuity was lost, persist `interrupted` and begin a new route segment only after user confirmation.
 8. Never connect the pre-interruption and resumed segments with a fabricated straight line.
 9. Treat Force Stop as an Android boundary: no work can continue until the user reopens the app.
