@@ -2,9 +2,62 @@
 
 A personal, local-first walking tracker for Android, built with Flutter.
 
-> **Project status:** The Android Flutter foundation now includes a local Profile/Settings slice with file-backed Drift persistence, draft recovery, and Turkish/English profile forms. Walking, maps, and tracking behavior remain planned.
+> **Project status:** The first usable local Profile slice is implemented and merged. It includes file-backed Drift persistence, draft recovery, and a Turkish/English profile form. Walking, maps, and background tracking are the next product slices.
 
 Walkingen is designed around a simple question: **am I walking consistently, and how is my activity changing over time?** It records deliberate walking sessions, draws the route on a map, keeps the history on the device, and compares recent activity with the user's own previous periods instead of enforcing an arbitrary fixed daily distance.
+
+## Quick start
+
+### Prerequisites
+
+- Flutter stable with the Dart SDK bundled by Flutter
+- Android SDK and an Android API level supported by the installed Flutter version
+- A connected Android device or emulator for device verification
+
+The primary test device is a Samsung Galaxy S23 running Android API 36. The project is Android-first; iOS and web are not current targets.
+
+### Run the app
+
+```bash
+cd app
+flutter pub get
+flutter run
+```
+
+### Build and verify
+
+```bash
+cd app
+dart format --output=none --set-exit-if-changed .
+flutter analyze
+flutter test
+flutter build apk --debug
+```
+
+The generated debug APK is written to `app/build/app/outputs/flutter-apk/app-debug.apk`.
+
+## Current status
+
+### Implemented
+
+- Local profile with display name, height, weight, and birth year
+- Drift/SQLite file-backed persistence
+- Recoverable partial profile drafts
+- Turkish and English profile labels and messages
+- System/light/dark theme foundations
+- CI verification and Gitleaks secret scanning
+
+### Next
+
+- Background GPS persistence and recovery on the Samsung Galaxy S23
+- User-editable settings screen for locale, theme, and weekly active-day target
+- Walking session lifecycle and route persistence
+
+### Planned later
+
+- History, weekly activity, and personal trend comparison
+- Real-walk validation
+- Local export/import after the MVP
 
 ## Product principles
 
@@ -16,12 +69,13 @@ Walkingen is designed around a simple question: **am I walking consistently, and
 - **Accessible UI:** calm visuals, large touch targets, scalable text, and status indicators that do not rely on color alone.
 - **Honest metrics:** uncertain or excluded activities are represented explicitly rather than silently distorting reports.
 
-## Planned MVP
+## MVP scope
 
 ### Profile and preferences
 
 - First-run profile with display name, height, weight, and birth year (implemented)
-- Local profile/settings persistence with recoverable drafts (implemented)
+- Local profile persistence with recoverable drafts (implemented)
+- Persisted locale/theme foundations (implemented; settings editing UI is next)
 - Light, dark, and system theme modes
 - Turkish and English localization
 
@@ -112,7 +166,7 @@ Development uses small vertical slices and an agentic review pipeline:
 4. Flutter quality gates run locally.
 5. An independent reviewer examines the diff and evidence.
 6. The branch is pushed and opened as a pull request.
-7. Once the initial CI workflow is added, CI and secret scanning must pass before merge. CI setup is required before the first production-code PR.
+7. CI verification and secret scanning must pass before merge.
 8. Verified progress is synchronized to the project dashboard in Obsidian.
 
 The implementer cannot be the only reviewer of its own change. See [`AGENTS.md`](AGENTS.md) for repository-level agent rules.
@@ -156,6 +210,7 @@ walkingen/
 │  ├─ adr/0001-flutter-foundation.md
 │  ├─ adr/0002-android-foreground-location.md
 │  ├─ adr/0003-design-system.md
+│  ├─ adr/0004-profile-local-settings.md
 │  └─ testing/strategy.md
 ├─ spikes/
 │  └─ 001-android-foreground-location/README.md  # Evidence; executable discarded
@@ -170,7 +225,7 @@ walkingen/
 ## Near-term roadmap
 
 1. Prove background GPS persistence and recovery on the Samsung Galaxy S23.
-2. Implement profile and local settings as the first end-to-end slice.
+2. Add user-editable locale, theme, and weekly-target settings.
 3. Implement walking session lifecycle and route persistence.
 4. Add history, weekly activity, and personal trend comparison.
 5. Validate the MVP through real walks.
