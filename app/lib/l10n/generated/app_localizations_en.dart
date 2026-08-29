@@ -33,4 +33,31 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get profileSettingsEmpty =>
       'Profile and settings options will appear here.';
+
+  @override
+  String get profileDisplayName => 'Name';
+
+  @override
+  String get profileHeight => 'Height (cm)';
+
+  @override
+  String get profileWeight => 'Weight (kg)';
+
+  @override
+  String get profileBirthYear => 'Birth year';
+
+  @override
+  String get profileSave => 'Save profile';
+
+  @override
+  String get profileSaved => 'Profile saved.';
+
+  @override
+  String get profileRequired => 'Please enter a valid value.';
+
+  @override
+  String get profileLoadFailed => 'Profile could not be loaded.';
+
+  @override
+  String get profileSaveFailed => 'Profile could not be saved.';
 }

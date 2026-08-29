@@ -7,5 +7,14 @@
   "historyEmpty": "Tamamlanan yürüyüşlerin burada görünecek.",
   "profileTab": "Profil",
   "profileSettingsTitle": "Profil ve Ayarlar",
-  "profileSettingsEmpty": "Profil ve ayar seçenekleri burada görünecek."
+  "profileSettingsEmpty": "Profil ve ayar seçenekleri burada görünecek.",
+  "profileDisplayName": "İsim",
+  "profileHeight": "Boy (cm)",
+  "profileWeight": "Kilo (kg)",
+  "profileBirthYear": "Doğum yılı",
+  "profileSave": "Profili kaydet",
+  "profileSaved": "Profil kaydedildi.",
+  "profileRequired": "Lütfen geçerli bir değer gir.",
+  "profileLoadFailed": "Profil yüklenemedi.",
+  "profileSaveFailed": "Profil kaydedilemedi."
 }

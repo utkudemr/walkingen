@@ -2,7 +2,7 @@
 
 A personal, local-first walking tracker for Android, built with Flutter.
 
-> **Project status:** The Android Flutter foundation is scaffolded with localized Home, History, and Profile/Settings navigation. Walking, profile, persistence, maps, and tracking behavior remain planned.
+> **Project status:** The Android Flutter foundation now includes a local Profile/Settings slice with file-backed Drift persistence, draft recovery, and Turkish/English profile forms. Walking, maps, and tracking behavior remain planned.
 
 Walkingen is designed around a simple question: **am I walking consistently, and how is my activity changing over time?** It records deliberate walking sessions, draws the route on a map, keeps the history on the device, and compares recent activity with the user's own previous periods instead of enforcing an arbitrary fixed daily distance.
 
@@ -20,8 +20,8 @@ Walkingen is designed around a simple question: **am I walking consistently, and
 
 ### Profile and preferences
 
-- First-run profile with display name, height, weight, and birth year
-- Editable daily reminder time
+- First-run profile with display name, height, weight, and birth year (implemented)
+- Local profile/settings persistence with recoverable drafts (implemented)
 - Light, dark, and system theme modes
 - Turkish and English localization
 
@@ -76,6 +76,7 @@ Walkingen is designed around a simple question: **am I walking consistently, and
 | Health Connect | Out of scope for the MVP |
 | Calories | Out of scope for the MVP |
 | Offline maps | Out of scope for the MVP |
+| Reminder time and notifications | Deferred to a separate vertical slice |
 
 ## Visual design system
 
