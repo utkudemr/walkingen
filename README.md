@@ -213,7 +213,8 @@ walkingen/
 │  ├─ adr/0004-profile-local-settings.md
 │  └─ testing/strategy.md
 ├─ spikes/
-│  └─ 001-android-foreground-location/README.md  # Evidence; executable discarded
+│  ├─ 001-android-foreground-location/README.md  # Emulator evidence; executable discarded
+│  └─ 002-s23-foreground-location/README.md       # Real S23 evidence; executable disposable
 ├─ .github/
 │  ├─ workflows/             # Flutter verification and Gitleaks
 │  └─ pull_request_template.md
