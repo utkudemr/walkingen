@@ -9,10 +9,11 @@ These rules apply to every human or coding agent working in this repository.
 - Domain behavior lives under `docs/domain/` once created.
 - Architecture decisions live under `docs/adr/` once created.
 - Test strategy and device matrices live under `docs/testing/`.
+- Visual tokens and visual rationale live in the root `DESIGN.md`.
 - Executable behavior is proven by tests.
 - Obsidian is the project dashboard, not the source of detailed technical behavior.
 
-If code, tests, and documentation disagree, stop and surface the conflict. Do not silently choose one.
+If code, tests, `DESIGN.md`, and documentation disagree, stop and surface the conflict. Do not silently choose one.
 
 ## Development discipline
 
@@ -39,6 +40,14 @@ flutter build apk --debug
 Run the smallest relevant test during RED/GREEN, then the complete suite. Android lifecycle, location, notification, or sensor changes also require the documented Samsung S23 scenario.
 
 Documentation-only, repository bootstrap, and pre-scaffold configuration changes do not require unavailable Flutter commands or a RED test. They still require applicable syntax/diff checks, secret scanning, link/consistency validation, and independent review. Explain every skipped gate in the PR evidence.
+
+Changes to `DESIGN.md` or visual tokens must also pass the pinned local design-contract lint:
+
+```bash
+npx -y -p @google/design.md@0.4.0 designmd lint DESIGN.md
+```
+
+The alpha design CLI is review-gated locally rather than a mandatory CI network dependency. A UI PR must either conform to the current design contract or update it deliberately with accessibility evidence.
 
 ## Review and Git
 
@@ -67,6 +76,7 @@ Documentation-only, repository bootstrap, and pre-scaffold configuration changes
 - Do not use wallpaper-derived dynamic colors in the initial product.
 - Use calm visuals, scalable text, clear semantics, and touch targets of at least 48dp.
 - Never communicate a status using color alone.
+- Reuse `DESIGN.md` tokens and component hierarchy; do not introduce one-off colors, spacing, radii, shadows, or typography without updating and reviewing the contract.
 - User preferences and product thresholds must not be scattered as hard-coded UI constants.
 
 ## Domain invariants

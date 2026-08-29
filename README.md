@@ -77,6 +77,18 @@ Walkingen is designed around a simple question: **am I walking consistently, and
 | Calories | Out of scope for the MVP |
 | Offline maps | Out of scope for the MVP |
 
+## Visual design system
+
+The root [`DESIGN.md`](DESIGN.md) is the versioned source of truth for Walkingen's visual tokens and visual rationale. It records the Action-First Calm direction, measured light/dark Material 3 palette, typography, spacing, touch targets, component hierarchy, and accessibility rules. Product behavior and screen flows remain in their dedicated product, domain, ADR, and testing documents.
+
+Validate the design contract with the pinned alpha CLI:
+
+```bash
+npx -y -p @google/design.md@0.4.0 designmd lint DESIGN.md
+```
+
+Flutter theme and component code remain handwritten and test-backed; the project does not generate Dart code from `DESIGN.md` at this stage.
+
 ## Privacy and secrets
 
 Walkingen must never commit credentials or personal route data to the repository. The MVP has no Walkingen cloud backend, but Google Maps is a third-party SDK and is subject to Google's own data-processing and privacy terms.
@@ -142,12 +154,14 @@ walkingen/
 │  ├─ domain/core-model.md
 │  ├─ adr/0001-flutter-foundation.md
 │  ├─ adr/0002-android-foreground-location.md
+│  ├─ adr/0003-design-system.md
 │  └─ testing/strategy.md
 ├─ spikes/
 │  └─ 001-android-foreground-location/README.md  # Evidence; executable discarded
 ├─ .github/
 │  ├─ workflows/             # Flutter verification and Gitleaks
 │  └─ pull_request_template.md
+├─ DESIGN.md                 # Visual tokens and agent-readable design contract
 ├─ AGENTS.md                 # Binding instructions for coding agents
 └─ README.md
 ```
