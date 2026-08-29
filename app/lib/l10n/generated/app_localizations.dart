@@ -145,6 +145,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile and settings options will appear here.'**
   String get profileSettingsEmpty;
+
+  /// No description provided for @profileDisplayName.
+  ///
+  /// In en, this message translates to:
+  /// **'Name'**
+  String get profileDisplayName;
+
+  /// No description provided for @profileHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Height (cm)'**
+  String get profileHeight;
+
+  /// No description provided for @profileWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Weight (kg)'**
+  String get profileWeight;
+
+  /// No description provided for @profileBirthYear.
+  ///
+  /// In en, this message translates to:
+  /// **'Birth year'**
+  String get profileBirthYear;
+
+  /// No description provided for @profileSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save profile'**
+  String get profileSave;
+
+  /// No description provided for @profileSaved.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile saved.'**
+  String get profileSaved;
+
+  /// No description provided for @profileRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid value.'**
+  String get profileRequired;
+
+  /// No description provided for @profileLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile could not be loaded.'**
+  String get profileLoadFailed;
+
+  /// No description provided for @profileSaveFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile could not be saved.'**
+  String get profileSaveFailed;
 }
 
 class _AppLocalizationsDelegate

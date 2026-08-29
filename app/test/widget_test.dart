@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:walkingen/database/app_database.dart';
 import 'package:walkingen/main.dart';
+import 'package:walkingen/profile/profile_repository.dart';
 
 void main() {
   testWidgets('renders localized Home by default', (tester) async {
@@ -131,5 +133,35 @@ void main() {
     } finally {
       semantics.dispose();
     }
+  });
+
+  testWidgets('profile form loads and saves a local profile', (tester) async {
+    final repository = ProfileRepository(AppDatabase.inMemory());
+    addTearDown(repository.close);
+    await tester.pumpWidget(
+      WalkingenApp(locale: const Locale('tr'), repository: repository),
+    );
+    await tester.tap(find.text('Profil'));
+    await tester.pumpAndSettle();
+
+    expect(find.text('İsim'), findsOneWidget);
+    await tester.enterText(find.widgetWithText(TextFormField, 'İsim'), 'Utku');
+    await tester.enterText(
+      find.widgetWithText(TextFormField, 'Boy (cm)'),
+      '180',
+    );
+    await tester.enterText(
+      find.widgetWithText(TextFormField, 'Kilo (kg)'),
+      '82,5',
+    );
+    await tester.enterText(
+      find.widgetWithText(TextFormField, 'Doğum yılı'),
+      '1990',
+    );
+    await tester.tap(find.text('Profili kaydet'));
+    await tester.pumpAndSettle();
+
+    expect((await repository.loadProfile())?.displayName, 'Utku');
+    expect(find.text('Profil kaydedildi.'), findsOneWidget);
   });
 }

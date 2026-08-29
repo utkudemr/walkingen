@@ -33,4 +33,31 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get profileSettingsEmpty =>
       'Profil ve ayar seçenekleri burada görünecek.';
+
+  @override
+  String get profileDisplayName => 'İsim';
+
+  @override
+  String get profileHeight => 'Boy (cm)';
+
+  @override
+  String get profileWeight => 'Kilo (kg)';
+
+  @override
+  String get profileBirthYear => 'Doğum yılı';
+
+  @override
+  String get profileSave => 'Profili kaydet';
+
+  @override
+  String get profileSaved => 'Profil kaydedildi.';
+
+  @override
+  String get profileRequired => 'Lütfen geçerli bir değer gir.';
+
+  @override
+  String get profileLoadFailed => 'Profil yüklenemedi.';
+
+  @override
+  String get profileSaveFailed => 'Profil kaydedilemedi.';
 }

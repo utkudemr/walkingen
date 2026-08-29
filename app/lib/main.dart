@@ -1,21 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:walkingen/database/app_database.dart';
 import 'package:walkingen/l10n/generated/app_localizations.dart';
+import 'package:walkingen/profile/local_settings.dart';
+import 'package:walkingen/profile/profile_page.dart';
+import 'package:walkingen/profile/profile_repository.dart';
 
-void main() {
-  runApp(const WalkingenApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final database = await AppDatabase.open();
+  final repository = ProfileRepository(database);
+  final settings = await repository.loadSettings();
+  runApp(WalkingenApp(repository: repository, settings: settings));
 }
 
 class WalkingenApp extends StatelessWidget {
-  const WalkingenApp({super.key, this.locale});
+  const WalkingenApp({super.key, this.locale, this.repository, this.settings});
 
   static const seedColor = Color(0xFF4F6F52);
 
   final Locale? locale;
+  final ProfileRepository? repository;
+  final LocalSettings? settings;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: locale,
+      locale: locale ?? _localeFromSettings(settings),
       onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
@@ -30,14 +40,38 @@ class WalkingenApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      themeMode: ThemeMode.system,
-      home: const AppShell(),
+      themeMode: _themeModeFromSettings(settings),
+      home: AppShell(repository: repository),
     );
+  }
+
+  static Locale? _localeFromSettings(LocalSettings? settings) {
+    switch (settings?.localeOverride) {
+      case 'tr':
+        return const Locale('tr');
+      case 'en':
+        return const Locale('en');
+      default:
+        return null;
+    }
+  }
+
+  static ThemeMode _themeModeFromSettings(LocalSettings? settings) {
+    switch (settings?.themeMode) {
+      case 'light':
+        return ThemeMode.light;
+      case 'dark':
+        return ThemeMode.dark;
+      default:
+        return ThemeMode.system;
+    }
   }
 }
 
 class AppShell extends StatefulWidget {
-  const AppShell({super.key});
+  const AppShell({super.key, this.repository});
+
+  final ProfileRepository? repository;
 
   @override
   State<AppShell> createState() => _AppShellState();
@@ -62,7 +96,9 @@ class _AppShellState extends State<AppShell> {
 
     return Scaffold(
       appBar: AppBar(title: Text(titles[_selectedIndex])),
-      body: Center(child: Text(messages[_selectedIndex])),
+      body: _selectedIndex == 2 && widget.repository != null
+          ? ProfilePage(repository: widget.repository!)
+          : Center(child: Text(messages[_selectedIndex])),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {

@@ -7,5 +7,14 @@
   "historyEmpty": "Your completed walks will appear here.",
   "profileTab": "Profile",
   "profileSettingsTitle": "Profile and Settings",
-  "profileSettingsEmpty": "Profile and settings options will appear here."
+  "profileSettingsEmpty": "Profile and settings options will appear here.",
+  "profileDisplayName": "Name",
+  "profileHeight": "Height (cm)",
+  "profileWeight": "Weight (kg)",
+  "profileBirthYear": "Birth year",
+  "profileSave": "Save profile",
+  "profileSaved": "Profile saved.",
+  "profileRequired": "Please enter a valid value.",
+  "profileLoadFailed": "Profile could not be loaded.",
+  "profileSaveFailed": "Profile could not be saved."
 }

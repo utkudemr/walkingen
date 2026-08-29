@@ -27,7 +27,7 @@ One observed location sample associated with a walk. At minimum it records obser
 
 ### Settings
 
-Local preferences including locale override, theme mode, weekly active-day target, and reminder time.
+- Local preferences including locale override, theme mode, and weekly active-day target. Reminder time belongs to the future local-notification slice and is not part of the current settings aggregate.
 
 ## Walk lifecycle
 
