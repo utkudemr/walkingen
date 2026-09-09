@@ -1247,6 +1247,1599 @@ class SettingsRowsCompanion extends UpdateCompanion<SettingsRow> {
   }
 }
 
+class $WalkingSessionRowsTable extends WalkingSessionRows
+    with TableInfo<$WalkingSessionRowsTable, WalkingSessionRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $WalkingSessionRowsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _startedAtMeta = const VerificationMeta(
+    'startedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startedAt = GeneratedColumn<DateTime>(
+    'started_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _stateMeta = const VerificationMeta('state');
+  @override
+  late final GeneratedColumn<String> state = GeneratedColumn<String>(
+    'state',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _inclusionMeta = const VerificationMeta(
+    'inclusion',
+  );
+  @override
+  late final GeneratedColumn<String> inclusion = GeneratedColumn<String>(
+    'inclusion',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _revisionMeta = const VerificationMeta(
+    'revision',
+  );
+  @override
+  late final GeneratedColumn<int> revision = GeneratedColumn<int>(
+    'revision',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _currentSegmentIdMeta = const VerificationMeta(
+    'currentSegmentId',
+  );
+  @override
+  late final GeneratedColumn<String> currentSegmentId = GeneratedColumn<String>(
+    'current_segment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _lastPointIdMeta = const VerificationMeta(
+    'lastPointId',
+  );
+  @override
+  late final GeneratedColumn<String> lastPointId = GeneratedColumn<String>(
+    'last_point_id',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastObservedAtMeta = const VerificationMeta(
+    'lastObservedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> lastObservedAt =
+      GeneratedColumn<DateTime>(
+        'last_observed_at',
+        aliasedName,
+        true,
+        type: DriftSqlType.dateTime,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _lastLatitudeMeta = const VerificationMeta(
+    'lastLatitude',
+  );
+  @override
+  late final GeneratedColumn<double> lastLatitude = GeneratedColumn<double>(
+    'last_latitude',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastLongitudeMeta = const VerificationMeta(
+    'lastLongitude',
+  );
+  @override
+  late final GeneratedColumn<double> lastLongitude = GeneratedColumn<double>(
+    'last_longitude',
+    aliasedName,
+    true,
+    type: DriftSqlType.double,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _lastAccuracyMetersMeta =
+      const VerificationMeta('lastAccuracyMeters');
+  @override
+  late final GeneratedColumn<double> lastAccuracyMeters =
+      GeneratedColumn<double>(
+        'last_accuracy_meters',
+        aliasedName,
+        true,
+        type: DriftSqlType.double,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _recoveryBoundaryPointIdMeta =
+      const VerificationMeta('recoveryBoundaryPointId');
+  @override
+  late final GeneratedColumn<String> recoveryBoundaryPointId =
+      GeneratedColumn<String>(
+        'recovery_boundary_point_id',
+        aliasedName,
+        true,
+        type: DriftSqlType.string,
+        requiredDuringInsert: false,
+      );
+  static const VerificationMeta _updatedAtMeta = const VerificationMeta(
+    'updatedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> updatedAt = GeneratedColumn<DateTime>(
+    'updated_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    startedAt,
+    state,
+    inclusion,
+    revision,
+    currentSegmentId,
+    lastPointId,
+    lastObservedAt,
+    lastLatitude,
+    lastLongitude,
+    lastAccuracyMeters,
+    recoveryBoundaryPointId,
+    updatedAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'walking_session_rows';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<WalkingSessionRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('started_at')) {
+      context.handle(
+        _startedAtMeta,
+        startedAt.isAcceptableOrUnknown(data['started_at']!, _startedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_startedAtMeta);
+    }
+    if (data.containsKey('state')) {
+      context.handle(
+        _stateMeta,
+        state.isAcceptableOrUnknown(data['state']!, _stateMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_stateMeta);
+    }
+    if (data.containsKey('inclusion')) {
+      context.handle(
+        _inclusionMeta,
+        inclusion.isAcceptableOrUnknown(data['inclusion']!, _inclusionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_inclusionMeta);
+    }
+    if (data.containsKey('revision')) {
+      context.handle(
+        _revisionMeta,
+        revision.isAcceptableOrUnknown(data['revision']!, _revisionMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_revisionMeta);
+    }
+    if (data.containsKey('current_segment_id')) {
+      context.handle(
+        _currentSegmentIdMeta,
+        currentSegmentId.isAcceptableOrUnknown(
+          data['current_segment_id']!,
+          _currentSegmentIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_point_id')) {
+      context.handle(
+        _lastPointIdMeta,
+        lastPointId.isAcceptableOrUnknown(
+          data['last_point_id']!,
+          _lastPointIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_observed_at')) {
+      context.handle(
+        _lastObservedAtMeta,
+        lastObservedAt.isAcceptableOrUnknown(
+          data['last_observed_at']!,
+          _lastObservedAtMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_latitude')) {
+      context.handle(
+        _lastLatitudeMeta,
+        lastLatitude.isAcceptableOrUnknown(
+          data['last_latitude']!,
+          _lastLatitudeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_longitude')) {
+      context.handle(
+        _lastLongitudeMeta,
+        lastLongitude.isAcceptableOrUnknown(
+          data['last_longitude']!,
+          _lastLongitudeMeta,
+        ),
+      );
+    }
+    if (data.containsKey('last_accuracy_meters')) {
+      context.handle(
+        _lastAccuracyMetersMeta,
+        lastAccuracyMeters.isAcceptableOrUnknown(
+          data['last_accuracy_meters']!,
+          _lastAccuracyMetersMeta,
+        ),
+      );
+    }
+    if (data.containsKey('recovery_boundary_point_id')) {
+      context.handle(
+        _recoveryBoundaryPointIdMeta,
+        recoveryBoundaryPointId.isAcceptableOrUnknown(
+          data['recovery_boundary_point_id']!,
+          _recoveryBoundaryPointIdMeta,
+        ),
+      );
+    }
+    if (data.containsKey('updated_at')) {
+      context.handle(
+        _updatedAtMeta,
+        updatedAt.isAcceptableOrUnknown(data['updated_at']!, _updatedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  WalkingSessionRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return WalkingSessionRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      startedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}started_at'],
+      )!,
+      state: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}state'],
+      )!,
+      inclusion: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}inclusion'],
+      )!,
+      revision: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}revision'],
+      )!,
+      currentSegmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}current_segment_id'],
+      )!,
+      lastPointId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}last_point_id'],
+      ),
+      lastObservedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}last_observed_at'],
+      ),
+      lastLatitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}last_latitude'],
+      ),
+      lastLongitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}last_longitude'],
+      ),
+      lastAccuracyMeters: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}last_accuracy_meters'],
+      ),
+      recoveryBoundaryPointId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}recovery_boundary_point_id'],
+      ),
+      updatedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}updated_at'],
+      )!,
+    );
+  }
+
+  @override
+  $WalkingSessionRowsTable createAlias(String alias) {
+    return $WalkingSessionRowsTable(attachedDatabase, alias);
+  }
+}
+
+class WalkingSessionRow extends DataClass
+    implements Insertable<WalkingSessionRow> {
+  final String id;
+  final DateTime startedAt;
+  final String state;
+  final String inclusion;
+  final int revision;
+  final String currentSegmentId;
+  final String? lastPointId;
+  final DateTime? lastObservedAt;
+  final double? lastLatitude;
+  final double? lastLongitude;
+  final double? lastAccuracyMeters;
+  final String? recoveryBoundaryPointId;
+  final DateTime updatedAt;
+  const WalkingSessionRow({
+    required this.id,
+    required this.startedAt,
+    required this.state,
+    required this.inclusion,
+    required this.revision,
+    required this.currentSegmentId,
+    this.lastPointId,
+    this.lastObservedAt,
+    this.lastLatitude,
+    this.lastLongitude,
+    this.lastAccuracyMeters,
+    this.recoveryBoundaryPointId,
+    required this.updatedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['started_at'] = Variable<DateTime>(startedAt);
+    map['state'] = Variable<String>(state);
+    map['inclusion'] = Variable<String>(inclusion);
+    map['revision'] = Variable<int>(revision);
+    map['current_segment_id'] = Variable<String>(currentSegmentId);
+    if (!nullToAbsent || lastPointId != null) {
+      map['last_point_id'] = Variable<String>(lastPointId);
+    }
+    if (!nullToAbsent || lastObservedAt != null) {
+      map['last_observed_at'] = Variable<DateTime>(lastObservedAt);
+    }
+    if (!nullToAbsent || lastLatitude != null) {
+      map['last_latitude'] = Variable<double>(lastLatitude);
+    }
+    if (!nullToAbsent || lastLongitude != null) {
+      map['last_longitude'] = Variable<double>(lastLongitude);
+    }
+    if (!nullToAbsent || lastAccuracyMeters != null) {
+      map['last_accuracy_meters'] = Variable<double>(lastAccuracyMeters);
+    }
+    if (!nullToAbsent || recoveryBoundaryPointId != null) {
+      map['recovery_boundary_point_id'] = Variable<String>(
+        recoveryBoundaryPointId,
+      );
+    }
+    map['updated_at'] = Variable<DateTime>(updatedAt);
+    return map;
+  }
+
+  WalkingSessionRowsCompanion toCompanion(bool nullToAbsent) {
+    return WalkingSessionRowsCompanion(
+      id: Value(id),
+      startedAt: Value(startedAt),
+      state: Value(state),
+      inclusion: Value(inclusion),
+      revision: Value(revision),
+      currentSegmentId: Value(currentSegmentId),
+      lastPointId: lastPointId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastPointId),
+      lastObservedAt: lastObservedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastObservedAt),
+      lastLatitude: lastLatitude == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastLatitude),
+      lastLongitude: lastLongitude == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastLongitude),
+      lastAccuracyMeters: lastAccuracyMeters == null && nullToAbsent
+          ? const Value.absent()
+          : Value(lastAccuracyMeters),
+      recoveryBoundaryPointId: recoveryBoundaryPointId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(recoveryBoundaryPointId),
+      updatedAt: Value(updatedAt),
+    );
+  }
+
+  factory WalkingSessionRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return WalkingSessionRow(
+      id: serializer.fromJson<String>(json['id']),
+      startedAt: serializer.fromJson<DateTime>(json['startedAt']),
+      state: serializer.fromJson<String>(json['state']),
+      inclusion: serializer.fromJson<String>(json['inclusion']),
+      revision: serializer.fromJson<int>(json['revision']),
+      currentSegmentId: serializer.fromJson<String>(json['currentSegmentId']),
+      lastPointId: serializer.fromJson<String?>(json['lastPointId']),
+      lastObservedAt: serializer.fromJson<DateTime?>(json['lastObservedAt']),
+      lastLatitude: serializer.fromJson<double?>(json['lastLatitude']),
+      lastLongitude: serializer.fromJson<double?>(json['lastLongitude']),
+      lastAccuracyMeters: serializer.fromJson<double?>(
+        json['lastAccuracyMeters'],
+      ),
+      recoveryBoundaryPointId: serializer.fromJson<String?>(
+        json['recoveryBoundaryPointId'],
+      ),
+      updatedAt: serializer.fromJson<DateTime>(json['updatedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'startedAt': serializer.toJson<DateTime>(startedAt),
+      'state': serializer.toJson<String>(state),
+      'inclusion': serializer.toJson<String>(inclusion),
+      'revision': serializer.toJson<int>(revision),
+      'currentSegmentId': serializer.toJson<String>(currentSegmentId),
+      'lastPointId': serializer.toJson<String?>(lastPointId),
+      'lastObservedAt': serializer.toJson<DateTime?>(lastObservedAt),
+      'lastLatitude': serializer.toJson<double?>(lastLatitude),
+      'lastLongitude': serializer.toJson<double?>(lastLongitude),
+      'lastAccuracyMeters': serializer.toJson<double?>(lastAccuracyMeters),
+      'recoveryBoundaryPointId': serializer.toJson<String?>(
+        recoveryBoundaryPointId,
+      ),
+      'updatedAt': serializer.toJson<DateTime>(updatedAt),
+    };
+  }
+
+  WalkingSessionRow copyWith({
+    String? id,
+    DateTime? startedAt,
+    String? state,
+    String? inclusion,
+    int? revision,
+    String? currentSegmentId,
+    Value<String?> lastPointId = const Value.absent(),
+    Value<DateTime?> lastObservedAt = const Value.absent(),
+    Value<double?> lastLatitude = const Value.absent(),
+    Value<double?> lastLongitude = const Value.absent(),
+    Value<double?> lastAccuracyMeters = const Value.absent(),
+    Value<String?> recoveryBoundaryPointId = const Value.absent(),
+    DateTime? updatedAt,
+  }) => WalkingSessionRow(
+    id: id ?? this.id,
+    startedAt: startedAt ?? this.startedAt,
+    state: state ?? this.state,
+    inclusion: inclusion ?? this.inclusion,
+    revision: revision ?? this.revision,
+    currentSegmentId: currentSegmentId ?? this.currentSegmentId,
+    lastPointId: lastPointId.present ? lastPointId.value : this.lastPointId,
+    lastObservedAt: lastObservedAt.present
+        ? lastObservedAt.value
+        : this.lastObservedAt,
+    lastLatitude: lastLatitude.present ? lastLatitude.value : this.lastLatitude,
+    lastLongitude: lastLongitude.present
+        ? lastLongitude.value
+        : this.lastLongitude,
+    lastAccuracyMeters: lastAccuracyMeters.present
+        ? lastAccuracyMeters.value
+        : this.lastAccuracyMeters,
+    recoveryBoundaryPointId: recoveryBoundaryPointId.present
+        ? recoveryBoundaryPointId.value
+        : this.recoveryBoundaryPointId,
+    updatedAt: updatedAt ?? this.updatedAt,
+  );
+  WalkingSessionRow copyWithCompanion(WalkingSessionRowsCompanion data) {
+    return WalkingSessionRow(
+      id: data.id.present ? data.id.value : this.id,
+      startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      state: data.state.present ? data.state.value : this.state,
+      inclusion: data.inclusion.present ? data.inclusion.value : this.inclusion,
+      revision: data.revision.present ? data.revision.value : this.revision,
+      currentSegmentId: data.currentSegmentId.present
+          ? data.currentSegmentId.value
+          : this.currentSegmentId,
+      lastPointId: data.lastPointId.present
+          ? data.lastPointId.value
+          : this.lastPointId,
+      lastObservedAt: data.lastObservedAt.present
+          ? data.lastObservedAt.value
+          : this.lastObservedAt,
+      lastLatitude: data.lastLatitude.present
+          ? data.lastLatitude.value
+          : this.lastLatitude,
+      lastLongitude: data.lastLongitude.present
+          ? data.lastLongitude.value
+          : this.lastLongitude,
+      lastAccuracyMeters: data.lastAccuracyMeters.present
+          ? data.lastAccuracyMeters.value
+          : this.lastAccuracyMeters,
+      recoveryBoundaryPointId: data.recoveryBoundaryPointId.present
+          ? data.recoveryBoundaryPointId.value
+          : this.recoveryBoundaryPointId,
+      updatedAt: data.updatedAt.present ? data.updatedAt.value : this.updatedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingSessionRow(')
+          ..write('id: $id, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('state: $state, ')
+          ..write('inclusion: $inclusion, ')
+          ..write('revision: $revision, ')
+          ..write('currentSegmentId: $currentSegmentId, ')
+          ..write('lastPointId: $lastPointId, ')
+          ..write('lastObservedAt: $lastObservedAt, ')
+          ..write('lastLatitude: $lastLatitude, ')
+          ..write('lastLongitude: $lastLongitude, ')
+          ..write('lastAccuracyMeters: $lastAccuracyMeters, ')
+          ..write('recoveryBoundaryPointId: $recoveryBoundaryPointId, ')
+          ..write('updatedAt: $updatedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    startedAt,
+    state,
+    inclusion,
+    revision,
+    currentSegmentId,
+    lastPointId,
+    lastObservedAt,
+    lastLatitude,
+    lastLongitude,
+    lastAccuracyMeters,
+    recoveryBoundaryPointId,
+    updatedAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is WalkingSessionRow &&
+          other.id == this.id &&
+          other.startedAt == this.startedAt &&
+          other.state == this.state &&
+          other.inclusion == this.inclusion &&
+          other.revision == this.revision &&
+          other.currentSegmentId == this.currentSegmentId &&
+          other.lastPointId == this.lastPointId &&
+          other.lastObservedAt == this.lastObservedAt &&
+          other.lastLatitude == this.lastLatitude &&
+          other.lastLongitude == this.lastLongitude &&
+          other.lastAccuracyMeters == this.lastAccuracyMeters &&
+          other.recoveryBoundaryPointId == this.recoveryBoundaryPointId &&
+          other.updatedAt == this.updatedAt);
+}
+
+class WalkingSessionRowsCompanion extends UpdateCompanion<WalkingSessionRow> {
+  final Value<String> id;
+  final Value<DateTime> startedAt;
+  final Value<String> state;
+  final Value<String> inclusion;
+  final Value<int> revision;
+  final Value<String> currentSegmentId;
+  final Value<String?> lastPointId;
+  final Value<DateTime?> lastObservedAt;
+  final Value<double?> lastLatitude;
+  final Value<double?> lastLongitude;
+  final Value<double?> lastAccuracyMeters;
+  final Value<String?> recoveryBoundaryPointId;
+  final Value<DateTime> updatedAt;
+  final Value<int> rowid;
+  const WalkingSessionRowsCompanion({
+    this.id = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.state = const Value.absent(),
+    this.inclusion = const Value.absent(),
+    this.revision = const Value.absent(),
+    this.currentSegmentId = const Value.absent(),
+    this.lastPointId = const Value.absent(),
+    this.lastObservedAt = const Value.absent(),
+    this.lastLatitude = const Value.absent(),
+    this.lastLongitude = const Value.absent(),
+    this.lastAccuracyMeters = const Value.absent(),
+    this.recoveryBoundaryPointId = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  WalkingSessionRowsCompanion.insert({
+    required String id,
+    required DateTime startedAt,
+    required String state,
+    required String inclusion,
+    required int revision,
+    this.currentSegmentId = const Value.absent(),
+    this.lastPointId = const Value.absent(),
+    this.lastObservedAt = const Value.absent(),
+    this.lastLatitude = const Value.absent(),
+    this.lastLongitude = const Value.absent(),
+    this.lastAccuracyMeters = const Value.absent(),
+    this.recoveryBoundaryPointId = const Value.absent(),
+    this.updatedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       startedAt = Value(startedAt),
+       state = Value(state),
+       inclusion = Value(inclusion),
+       revision = Value(revision);
+  static Insertable<WalkingSessionRow> custom({
+    Expression<String>? id,
+    Expression<DateTime>? startedAt,
+    Expression<String>? state,
+    Expression<String>? inclusion,
+    Expression<int>? revision,
+    Expression<String>? currentSegmentId,
+    Expression<String>? lastPointId,
+    Expression<DateTime>? lastObservedAt,
+    Expression<double>? lastLatitude,
+    Expression<double>? lastLongitude,
+    Expression<double>? lastAccuracyMeters,
+    Expression<String>? recoveryBoundaryPointId,
+    Expression<DateTime>? updatedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (startedAt != null) 'started_at': startedAt,
+      if (state != null) 'state': state,
+      if (inclusion != null) 'inclusion': inclusion,
+      if (revision != null) 'revision': revision,
+      if (currentSegmentId != null) 'current_segment_id': currentSegmentId,
+      if (lastPointId != null) 'last_point_id': lastPointId,
+      if (lastObservedAt != null) 'last_observed_at': lastObservedAt,
+      if (lastLatitude != null) 'last_latitude': lastLatitude,
+      if (lastLongitude != null) 'last_longitude': lastLongitude,
+      if (lastAccuracyMeters != null)
+        'last_accuracy_meters': lastAccuracyMeters,
+      if (recoveryBoundaryPointId != null)
+        'recovery_boundary_point_id': recoveryBoundaryPointId,
+      if (updatedAt != null) 'updated_at': updatedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  WalkingSessionRowsCompanion copyWith({
+    Value<String>? id,
+    Value<DateTime>? startedAt,
+    Value<String>? state,
+    Value<String>? inclusion,
+    Value<int>? revision,
+    Value<String>? currentSegmentId,
+    Value<String?>? lastPointId,
+    Value<DateTime?>? lastObservedAt,
+    Value<double?>? lastLatitude,
+    Value<double?>? lastLongitude,
+    Value<double?>? lastAccuracyMeters,
+    Value<String?>? recoveryBoundaryPointId,
+    Value<DateTime>? updatedAt,
+    Value<int>? rowid,
+  }) {
+    return WalkingSessionRowsCompanion(
+      id: id ?? this.id,
+      startedAt: startedAt ?? this.startedAt,
+      state: state ?? this.state,
+      inclusion: inclusion ?? this.inclusion,
+      revision: revision ?? this.revision,
+      currentSegmentId: currentSegmentId ?? this.currentSegmentId,
+      lastPointId: lastPointId ?? this.lastPointId,
+      lastObservedAt: lastObservedAt ?? this.lastObservedAt,
+      lastLatitude: lastLatitude ?? this.lastLatitude,
+      lastLongitude: lastLongitude ?? this.lastLongitude,
+      lastAccuracyMeters: lastAccuracyMeters ?? this.lastAccuracyMeters,
+      recoveryBoundaryPointId:
+          recoveryBoundaryPointId ?? this.recoveryBoundaryPointId,
+      updatedAt: updatedAt ?? this.updatedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (startedAt.present) {
+      map['started_at'] = Variable<DateTime>(startedAt.value);
+    }
+    if (state.present) {
+      map['state'] = Variable<String>(state.value);
+    }
+    if (inclusion.present) {
+      map['inclusion'] = Variable<String>(inclusion.value);
+    }
+    if (revision.present) {
+      map['revision'] = Variable<int>(revision.value);
+    }
+    if (currentSegmentId.present) {
+      map['current_segment_id'] = Variable<String>(currentSegmentId.value);
+    }
+    if (lastPointId.present) {
+      map['last_point_id'] = Variable<String>(lastPointId.value);
+    }
+    if (lastObservedAt.present) {
+      map['last_observed_at'] = Variable<DateTime>(lastObservedAt.value);
+    }
+    if (lastLatitude.present) {
+      map['last_latitude'] = Variable<double>(lastLatitude.value);
+    }
+    if (lastLongitude.present) {
+      map['last_longitude'] = Variable<double>(lastLongitude.value);
+    }
+    if (lastAccuracyMeters.present) {
+      map['last_accuracy_meters'] = Variable<double>(lastAccuracyMeters.value);
+    }
+    if (recoveryBoundaryPointId.present) {
+      map['recovery_boundary_point_id'] = Variable<String>(
+        recoveryBoundaryPointId.value,
+      );
+    }
+    if (updatedAt.present) {
+      map['updated_at'] = Variable<DateTime>(updatedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingSessionRowsCompanion(')
+          ..write('id: $id, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('state: $state, ')
+          ..write('inclusion: $inclusion, ')
+          ..write('revision: $revision, ')
+          ..write('currentSegmentId: $currentSegmentId, ')
+          ..write('lastPointId: $lastPointId, ')
+          ..write('lastObservedAt: $lastObservedAt, ')
+          ..write('lastLatitude: $lastLatitude, ')
+          ..write('lastLongitude: $lastLongitude, ')
+          ..write('lastAccuracyMeters: $lastAccuracyMeters, ')
+          ..write('recoveryBoundaryPointId: $recoveryBoundaryPointId, ')
+          ..write('updatedAt: $updatedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $WalkingSegmentRowsTable extends WalkingSegmentRows
+    with TableInfo<$WalkingSegmentRowsTable, WalkingSegmentRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $WalkingSegmentRowsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sessionIdMeta = const VerificationMeta(
+    'sessionId',
+  );
+  @override
+  late final GeneratedColumn<String> sessionId = GeneratedColumn<String>(
+    'session_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _startedAtMeta = const VerificationMeta(
+    'startedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> startedAt = GeneratedColumn<DateTime>(
+    'started_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _endedAtMeta = const VerificationMeta(
+    'endedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> endedAt = GeneratedColumn<DateTime>(
+    'ended_at',
+    aliasedName,
+    true,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, sessionId, startedAt, endedAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'walking_segment_rows';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<WalkingSegmentRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('session_id')) {
+      context.handle(
+        _sessionIdMeta,
+        sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sessionIdMeta);
+    }
+    if (data.containsKey('started_at')) {
+      context.handle(
+        _startedAtMeta,
+        startedAt.isAcceptableOrUnknown(data['started_at']!, _startedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_startedAtMeta);
+    }
+    if (data.containsKey('ended_at')) {
+      context.handle(
+        _endedAtMeta,
+        endedAt.isAcceptableOrUnknown(data['ended_at']!, _endedAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  WalkingSegmentRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return WalkingSegmentRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      sessionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}session_id'],
+      )!,
+      startedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}started_at'],
+      )!,
+      endedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}ended_at'],
+      ),
+    );
+  }
+
+  @override
+  $WalkingSegmentRowsTable createAlias(String alias) {
+    return $WalkingSegmentRowsTable(attachedDatabase, alias);
+  }
+}
+
+class WalkingSegmentRow extends DataClass
+    implements Insertable<WalkingSegmentRow> {
+  final String id;
+  final String sessionId;
+  final DateTime startedAt;
+  final DateTime? endedAt;
+  const WalkingSegmentRow({
+    required this.id,
+    required this.sessionId,
+    required this.startedAt,
+    this.endedAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['session_id'] = Variable<String>(sessionId);
+    map['started_at'] = Variable<DateTime>(startedAt);
+    if (!nullToAbsent || endedAt != null) {
+      map['ended_at'] = Variable<DateTime>(endedAt);
+    }
+    return map;
+  }
+
+  WalkingSegmentRowsCompanion toCompanion(bool nullToAbsent) {
+    return WalkingSegmentRowsCompanion(
+      id: Value(id),
+      sessionId: Value(sessionId),
+      startedAt: Value(startedAt),
+      endedAt: endedAt == null && nullToAbsent
+          ? const Value.absent()
+          : Value(endedAt),
+    );
+  }
+
+  factory WalkingSegmentRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return WalkingSegmentRow(
+      id: serializer.fromJson<String>(json['id']),
+      sessionId: serializer.fromJson<String>(json['sessionId']),
+      startedAt: serializer.fromJson<DateTime>(json['startedAt']),
+      endedAt: serializer.fromJson<DateTime?>(json['endedAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'sessionId': serializer.toJson<String>(sessionId),
+      'startedAt': serializer.toJson<DateTime>(startedAt),
+      'endedAt': serializer.toJson<DateTime?>(endedAt),
+    };
+  }
+
+  WalkingSegmentRow copyWith({
+    String? id,
+    String? sessionId,
+    DateTime? startedAt,
+    Value<DateTime?> endedAt = const Value.absent(),
+  }) => WalkingSegmentRow(
+    id: id ?? this.id,
+    sessionId: sessionId ?? this.sessionId,
+    startedAt: startedAt ?? this.startedAt,
+    endedAt: endedAt.present ? endedAt.value : this.endedAt,
+  );
+  WalkingSegmentRow copyWithCompanion(WalkingSegmentRowsCompanion data) {
+    return WalkingSegmentRow(
+      id: data.id.present ? data.id.value : this.id,
+      sessionId: data.sessionId.present ? data.sessionId.value : this.sessionId,
+      startedAt: data.startedAt.present ? data.startedAt.value : this.startedAt,
+      endedAt: data.endedAt.present ? data.endedAt.value : this.endedAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingSegmentRow(')
+          ..write('id: $id, ')
+          ..write('sessionId: $sessionId, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, sessionId, startedAt, endedAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is WalkingSegmentRow &&
+          other.id == this.id &&
+          other.sessionId == this.sessionId &&
+          other.startedAt == this.startedAt &&
+          other.endedAt == this.endedAt);
+}
+
+class WalkingSegmentRowsCompanion extends UpdateCompanion<WalkingSegmentRow> {
+  final Value<String> id;
+  final Value<String> sessionId;
+  final Value<DateTime> startedAt;
+  final Value<DateTime?> endedAt;
+  final Value<int> rowid;
+  const WalkingSegmentRowsCompanion({
+    this.id = const Value.absent(),
+    this.sessionId = const Value.absent(),
+    this.startedAt = const Value.absent(),
+    this.endedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  WalkingSegmentRowsCompanion.insert({
+    required String id,
+    required String sessionId,
+    required DateTime startedAt,
+    this.endedAt = const Value.absent(),
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       sessionId = Value(sessionId),
+       startedAt = Value(startedAt);
+  static Insertable<WalkingSegmentRow> custom({
+    Expression<String>? id,
+    Expression<String>? sessionId,
+    Expression<DateTime>? startedAt,
+    Expression<DateTime>? endedAt,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (sessionId != null) 'session_id': sessionId,
+      if (startedAt != null) 'started_at': startedAt,
+      if (endedAt != null) 'ended_at': endedAt,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  WalkingSegmentRowsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? sessionId,
+    Value<DateTime>? startedAt,
+    Value<DateTime?>? endedAt,
+    Value<int>? rowid,
+  }) {
+    return WalkingSegmentRowsCompanion(
+      id: id ?? this.id,
+      sessionId: sessionId ?? this.sessionId,
+      startedAt: startedAt ?? this.startedAt,
+      endedAt: endedAt ?? this.endedAt,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (sessionId.present) {
+      map['session_id'] = Variable<String>(sessionId.value);
+    }
+    if (startedAt.present) {
+      map['started_at'] = Variable<DateTime>(startedAt.value);
+    }
+    if (endedAt.present) {
+      map['ended_at'] = Variable<DateTime>(endedAt.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingSegmentRowsCompanion(')
+          ..write('id: $id, ')
+          ..write('sessionId: $sessionId, ')
+          ..write('startedAt: $startedAt, ')
+          ..write('endedAt: $endedAt, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $WalkingPointRowsTable extends WalkingPointRows
+    with TableInfo<$WalkingPointRowsTable, WalkingPointRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $WalkingPointRowsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<String> id = GeneratedColumn<String>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _sessionIdMeta = const VerificationMeta(
+    'sessionId',
+  );
+  @override
+  late final GeneratedColumn<String> sessionId = GeneratedColumn<String>(
+    'session_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _segmentIdMeta = const VerificationMeta(
+    'segmentId',
+  );
+  @override
+  late final GeneratedColumn<String> segmentId = GeneratedColumn<String>(
+    'segment_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _observedAtMeta = const VerificationMeta(
+    'observedAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> observedAt = GeneratedColumn<DateTime>(
+    'observed_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _latitudeMeta = const VerificationMeta(
+    'latitude',
+  );
+  @override
+  late final GeneratedColumn<double> latitude = GeneratedColumn<double>(
+    'latitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _longitudeMeta = const VerificationMeta(
+    'longitude',
+  );
+  @override
+  late final GeneratedColumn<double> longitude = GeneratedColumn<double>(
+    'longitude',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _accuracyMetersMeta = const VerificationMeta(
+    'accuracyMeters',
+  );
+  @override
+  late final GeneratedColumn<double> accuracyMeters = GeneratedColumn<double>(
+    'accuracy_meters',
+    aliasedName,
+    false,
+    type: DriftSqlType.double,
+    requiredDuringInsert: true,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    sessionId,
+    segmentId,
+    observedAt,
+    latitude,
+    longitude,
+    accuracyMeters,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'walking_point_rows';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<WalkingPointRow> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    } else if (isInserting) {
+      context.missing(_idMeta);
+    }
+    if (data.containsKey('session_id')) {
+      context.handle(
+        _sessionIdMeta,
+        sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_sessionIdMeta);
+    }
+    if (data.containsKey('segment_id')) {
+      context.handle(
+        _segmentIdMeta,
+        segmentId.isAcceptableOrUnknown(data['segment_id']!, _segmentIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_segmentIdMeta);
+    }
+    if (data.containsKey('observed_at')) {
+      context.handle(
+        _observedAtMeta,
+        observedAt.isAcceptableOrUnknown(data['observed_at']!, _observedAtMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_observedAtMeta);
+    }
+    if (data.containsKey('latitude')) {
+      context.handle(
+        _latitudeMeta,
+        latitude.isAcceptableOrUnknown(data['latitude']!, _latitudeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_latitudeMeta);
+    }
+    if (data.containsKey('longitude')) {
+      context.handle(
+        _longitudeMeta,
+        longitude.isAcceptableOrUnknown(data['longitude']!, _longitudeMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_longitudeMeta);
+    }
+    if (data.containsKey('accuracy_meters')) {
+      context.handle(
+        _accuracyMetersMeta,
+        accuracyMeters.isAcceptableOrUnknown(
+          data['accuracy_meters']!,
+          _accuracyMetersMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_accuracyMetersMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {sessionId, id};
+  @override
+  WalkingPointRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return WalkingPointRow(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}id'],
+      )!,
+      sessionId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}session_id'],
+      )!,
+      segmentId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}segment_id'],
+      )!,
+      observedAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}observed_at'],
+      )!,
+      latitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}latitude'],
+      )!,
+      longitude: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}longitude'],
+      )!,
+      accuracyMeters: attachedDatabase.typeMapping.read(
+        DriftSqlType.double,
+        data['${effectivePrefix}accuracy_meters'],
+      )!,
+    );
+  }
+
+  @override
+  $WalkingPointRowsTable createAlias(String alias) {
+    return $WalkingPointRowsTable(attachedDatabase, alias);
+  }
+}
+
+class WalkingPointRow extends DataClass implements Insertable<WalkingPointRow> {
+  final String id;
+  final String sessionId;
+  final String segmentId;
+  final DateTime observedAt;
+  final double latitude;
+  final double longitude;
+  final double accuracyMeters;
+  const WalkingPointRow({
+    required this.id,
+    required this.sessionId,
+    required this.segmentId,
+    required this.observedAt,
+    required this.latitude,
+    required this.longitude,
+    required this.accuracyMeters,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<String>(id);
+    map['session_id'] = Variable<String>(sessionId);
+    map['segment_id'] = Variable<String>(segmentId);
+    map['observed_at'] = Variable<DateTime>(observedAt);
+    map['latitude'] = Variable<double>(latitude);
+    map['longitude'] = Variable<double>(longitude);
+    map['accuracy_meters'] = Variable<double>(accuracyMeters);
+    return map;
+  }
+
+  WalkingPointRowsCompanion toCompanion(bool nullToAbsent) {
+    return WalkingPointRowsCompanion(
+      id: Value(id),
+      sessionId: Value(sessionId),
+      segmentId: Value(segmentId),
+      observedAt: Value(observedAt),
+      latitude: Value(latitude),
+      longitude: Value(longitude),
+      accuracyMeters: Value(accuracyMeters),
+    );
+  }
+
+  factory WalkingPointRow.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return WalkingPointRow(
+      id: serializer.fromJson<String>(json['id']),
+      sessionId: serializer.fromJson<String>(json['sessionId']),
+      segmentId: serializer.fromJson<String>(json['segmentId']),
+      observedAt: serializer.fromJson<DateTime>(json['observedAt']),
+      latitude: serializer.fromJson<double>(json['latitude']),
+      longitude: serializer.fromJson<double>(json['longitude']),
+      accuracyMeters: serializer.fromJson<double>(json['accuracyMeters']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<String>(id),
+      'sessionId': serializer.toJson<String>(sessionId),
+      'segmentId': serializer.toJson<String>(segmentId),
+      'observedAt': serializer.toJson<DateTime>(observedAt),
+      'latitude': serializer.toJson<double>(latitude),
+      'longitude': serializer.toJson<double>(longitude),
+      'accuracyMeters': serializer.toJson<double>(accuracyMeters),
+    };
+  }
+
+  WalkingPointRow copyWith({
+    String? id,
+    String? sessionId,
+    String? segmentId,
+    DateTime? observedAt,
+    double? latitude,
+    double? longitude,
+    double? accuracyMeters,
+  }) => WalkingPointRow(
+    id: id ?? this.id,
+    sessionId: sessionId ?? this.sessionId,
+    segmentId: segmentId ?? this.segmentId,
+    observedAt: observedAt ?? this.observedAt,
+    latitude: latitude ?? this.latitude,
+    longitude: longitude ?? this.longitude,
+    accuracyMeters: accuracyMeters ?? this.accuracyMeters,
+  );
+  WalkingPointRow copyWithCompanion(WalkingPointRowsCompanion data) {
+    return WalkingPointRow(
+      id: data.id.present ? data.id.value : this.id,
+      sessionId: data.sessionId.present ? data.sessionId.value : this.sessionId,
+      segmentId: data.segmentId.present ? data.segmentId.value : this.segmentId,
+      observedAt: data.observedAt.present
+          ? data.observedAt.value
+          : this.observedAt,
+      latitude: data.latitude.present ? data.latitude.value : this.latitude,
+      longitude: data.longitude.present ? data.longitude.value : this.longitude,
+      accuracyMeters: data.accuracyMeters.present
+          ? data.accuracyMeters.value
+          : this.accuracyMeters,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingPointRow(')
+          ..write('id: $id, ')
+          ..write('sessionId: $sessionId, ')
+          ..write('segmentId: $segmentId, ')
+          ..write('observedAt: $observedAt, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('accuracyMeters: $accuracyMeters')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    sessionId,
+    segmentId,
+    observedAt,
+    latitude,
+    longitude,
+    accuracyMeters,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is WalkingPointRow &&
+          other.id == this.id &&
+          other.sessionId == this.sessionId &&
+          other.segmentId == this.segmentId &&
+          other.observedAt == this.observedAt &&
+          other.latitude == this.latitude &&
+          other.longitude == this.longitude &&
+          other.accuracyMeters == this.accuracyMeters);
+}
+
+class WalkingPointRowsCompanion extends UpdateCompanion<WalkingPointRow> {
+  final Value<String> id;
+  final Value<String> sessionId;
+  final Value<String> segmentId;
+  final Value<DateTime> observedAt;
+  final Value<double> latitude;
+  final Value<double> longitude;
+  final Value<double> accuracyMeters;
+  final Value<int> rowid;
+  const WalkingPointRowsCompanion({
+    this.id = const Value.absent(),
+    this.sessionId = const Value.absent(),
+    this.segmentId = const Value.absent(),
+    this.observedAt = const Value.absent(),
+    this.latitude = const Value.absent(),
+    this.longitude = const Value.absent(),
+    this.accuracyMeters = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  WalkingPointRowsCompanion.insert({
+    required String id,
+    required String sessionId,
+    required String segmentId,
+    required DateTime observedAt,
+    required double latitude,
+    required double longitude,
+    required double accuracyMeters,
+    this.rowid = const Value.absent(),
+  }) : id = Value(id),
+       sessionId = Value(sessionId),
+       segmentId = Value(segmentId),
+       observedAt = Value(observedAt),
+       latitude = Value(latitude),
+       longitude = Value(longitude),
+       accuracyMeters = Value(accuracyMeters);
+  static Insertable<WalkingPointRow> custom({
+    Expression<String>? id,
+    Expression<String>? sessionId,
+    Expression<String>? segmentId,
+    Expression<DateTime>? observedAt,
+    Expression<double>? latitude,
+    Expression<double>? longitude,
+    Expression<double>? accuracyMeters,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (sessionId != null) 'session_id': sessionId,
+      if (segmentId != null) 'segment_id': segmentId,
+      if (observedAt != null) 'observed_at': observedAt,
+      if (latitude != null) 'latitude': latitude,
+      if (longitude != null) 'longitude': longitude,
+      if (accuracyMeters != null) 'accuracy_meters': accuracyMeters,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  WalkingPointRowsCompanion copyWith({
+    Value<String>? id,
+    Value<String>? sessionId,
+    Value<String>? segmentId,
+    Value<DateTime>? observedAt,
+    Value<double>? latitude,
+    Value<double>? longitude,
+    Value<double>? accuracyMeters,
+    Value<int>? rowid,
+  }) {
+    return WalkingPointRowsCompanion(
+      id: id ?? this.id,
+      sessionId: sessionId ?? this.sessionId,
+      segmentId: segmentId ?? this.segmentId,
+      observedAt: observedAt ?? this.observedAt,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      accuracyMeters: accuracyMeters ?? this.accuracyMeters,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<String>(id.value);
+    }
+    if (sessionId.present) {
+      map['session_id'] = Variable<String>(sessionId.value);
+    }
+    if (segmentId.present) {
+      map['segment_id'] = Variable<String>(segmentId.value);
+    }
+    if (observedAt.present) {
+      map['observed_at'] = Variable<DateTime>(observedAt.value);
+    }
+    if (latitude.present) {
+      map['latitude'] = Variable<double>(latitude.value);
+    }
+    if (longitude.present) {
+      map['longitude'] = Variable<double>(longitude.value);
+    }
+    if (accuracyMeters.present) {
+      map['accuracy_meters'] = Variable<double>(accuracyMeters.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('WalkingPointRowsCompanion(')
+          ..write('id: $id, ')
+          ..write('sessionId: $sessionId, ')
+          ..write('segmentId: $segmentId, ')
+          ..write('observedAt: $observedAt, ')
+          ..write('latitude: $latitude, ')
+          ..write('longitude: $longitude, ')
+          ..write('accuracyMeters: $accuracyMeters, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -1255,6 +2848,13 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     this,
   );
   late final $SettingsRowsTable settingsRows = $SettingsRowsTable(this);
+  late final $WalkingSessionRowsTable walkingSessionRows =
+      $WalkingSessionRowsTable(this);
+  late final $WalkingSegmentRowsTable walkingSegmentRows =
+      $WalkingSegmentRowsTable(this);
+  late final $WalkingPointRowsTable walkingPointRows = $WalkingPointRowsTable(
+    this,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -1263,6 +2863,9 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     profileRows,
     profileDraftRows,
     settingsRows,
+    walkingSessionRows,
+    walkingSegmentRows,
+    walkingPointRows,
   ];
 }
 
@@ -1927,6 +3530,827 @@ typedef $$SettingsRowsTableProcessedTableManager =
       SettingsRow,
       PrefetchHooks Function()
     >;
+typedef $$WalkingSessionRowsTableCreateCompanionBuilder =
+    WalkingSessionRowsCompanion Function({
+      required String id,
+      required DateTime startedAt,
+      required String state,
+      required String inclusion,
+      required int revision,
+      Value<String> currentSegmentId,
+      Value<String?> lastPointId,
+      Value<DateTime?> lastObservedAt,
+      Value<double?> lastLatitude,
+      Value<double?> lastLongitude,
+      Value<double?> lastAccuracyMeters,
+      Value<String?> recoveryBoundaryPointId,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+typedef $$WalkingSessionRowsTableUpdateCompanionBuilder =
+    WalkingSessionRowsCompanion Function({
+      Value<String> id,
+      Value<DateTime> startedAt,
+      Value<String> state,
+      Value<String> inclusion,
+      Value<int> revision,
+      Value<String> currentSegmentId,
+      Value<String?> lastPointId,
+      Value<DateTime?> lastObservedAt,
+      Value<double?> lastLatitude,
+      Value<double?> lastLongitude,
+      Value<double?> lastAccuracyMeters,
+      Value<String?> recoveryBoundaryPointId,
+      Value<DateTime> updatedAt,
+      Value<int> rowid,
+    });
+
+class $$WalkingSessionRowsTableFilterComposer
+    extends Composer<_$AppDatabase, $WalkingSessionRowsTable> {
+  $$WalkingSessionRowsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get state => $composableBuilder(
+    column: $table.state,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get inclusion => $composableBuilder(
+    column: $table.inclusion,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<int> get revision => $composableBuilder(
+    column: $table.revision,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get currentSegmentId => $composableBuilder(
+    column: $table.currentSegmentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get lastPointId => $composableBuilder(
+    column: $table.lastPointId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get lastObservedAt => $composableBuilder(
+    column: $table.lastObservedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get lastLatitude => $composableBuilder(
+    column: $table.lastLatitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get lastLongitude => $composableBuilder(
+    column: $table.lastLongitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get lastAccuracyMeters => $composableBuilder(
+    column: $table.lastAccuracyMeters,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get recoveryBoundaryPointId => $composableBuilder(
+    column: $table.recoveryBoundaryPointId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$WalkingSessionRowsTableOrderingComposer
+    extends Composer<_$AppDatabase, $WalkingSessionRowsTable> {
+  $$WalkingSessionRowsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get state => $composableBuilder(
+    column: $table.state,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get inclusion => $composableBuilder(
+    column: $table.inclusion,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<int> get revision => $composableBuilder(
+    column: $table.revision,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get currentSegmentId => $composableBuilder(
+    column: $table.currentSegmentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get lastPointId => $composableBuilder(
+    column: $table.lastPointId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get lastObservedAt => $composableBuilder(
+    column: $table.lastObservedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get lastLatitude => $composableBuilder(
+    column: $table.lastLatitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get lastLongitude => $composableBuilder(
+    column: $table.lastLongitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get lastAccuracyMeters => $composableBuilder(
+    column: $table.lastAccuracyMeters,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get recoveryBoundaryPointId => $composableBuilder(
+    column: $table.recoveryBoundaryPointId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get updatedAt => $composableBuilder(
+    column: $table.updatedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$WalkingSessionRowsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $WalkingSessionRowsTable> {
+  $$WalkingSessionRowsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startedAt =>
+      $composableBuilder(column: $table.startedAt, builder: (column) => column);
+
+  GeneratedColumn<String> get state =>
+      $composableBuilder(column: $table.state, builder: (column) => column);
+
+  GeneratedColumn<String> get inclusion =>
+      $composableBuilder(column: $table.inclusion, builder: (column) => column);
+
+  GeneratedColumn<int> get revision =>
+      $composableBuilder(column: $table.revision, builder: (column) => column);
+
+  GeneratedColumn<String> get currentSegmentId => $composableBuilder(
+    column: $table.currentSegmentId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get lastPointId => $composableBuilder(
+    column: $table.lastPointId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get lastObservedAt => $composableBuilder(
+    column: $table.lastObservedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get lastLatitude => $composableBuilder(
+    column: $table.lastLatitude,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get lastLongitude => $composableBuilder(
+    column: $table.lastLongitude,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get lastAccuracyMeters => $composableBuilder(
+    column: $table.lastAccuracyMeters,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get recoveryBoundaryPointId => $composableBuilder(
+    column: $table.recoveryBoundaryPointId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get updatedAt =>
+      $composableBuilder(column: $table.updatedAt, builder: (column) => column);
+}
+
+class $$WalkingSessionRowsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $WalkingSessionRowsTable,
+          WalkingSessionRow,
+          $$WalkingSessionRowsTableFilterComposer,
+          $$WalkingSessionRowsTableOrderingComposer,
+          $$WalkingSessionRowsTableAnnotationComposer,
+          $$WalkingSessionRowsTableCreateCompanionBuilder,
+          $$WalkingSessionRowsTableUpdateCompanionBuilder,
+          (
+            WalkingSessionRow,
+            BaseReferences<
+              _$AppDatabase,
+              $WalkingSessionRowsTable,
+              WalkingSessionRow
+            >,
+          ),
+          WalkingSessionRow,
+          PrefetchHooks Function()
+        > {
+  $$WalkingSessionRowsTableTableManager(
+    _$AppDatabase db,
+    $WalkingSessionRowsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$WalkingSessionRowsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$WalkingSessionRowsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$WalkingSessionRowsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<DateTime> startedAt = const Value.absent(),
+                Value<String> state = const Value.absent(),
+                Value<String> inclusion = const Value.absent(),
+                Value<int> revision = const Value.absent(),
+                Value<String> currentSegmentId = const Value.absent(),
+                Value<String?> lastPointId = const Value.absent(),
+                Value<DateTime?> lastObservedAt = const Value.absent(),
+                Value<double?> lastLatitude = const Value.absent(),
+                Value<double?> lastLongitude = const Value.absent(),
+                Value<double?> lastAccuracyMeters = const Value.absent(),
+                Value<String?> recoveryBoundaryPointId = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingSessionRowsCompanion(
+                id: id,
+                startedAt: startedAt,
+                state: state,
+                inclusion: inclusion,
+                revision: revision,
+                currentSegmentId: currentSegmentId,
+                lastPointId: lastPointId,
+                lastObservedAt: lastObservedAt,
+                lastLatitude: lastLatitude,
+                lastLongitude: lastLongitude,
+                lastAccuracyMeters: lastAccuracyMeters,
+                recoveryBoundaryPointId: recoveryBoundaryPointId,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required DateTime startedAt,
+                required String state,
+                required String inclusion,
+                required int revision,
+                Value<String> currentSegmentId = const Value.absent(),
+                Value<String?> lastPointId = const Value.absent(),
+                Value<DateTime?> lastObservedAt = const Value.absent(),
+                Value<double?> lastLatitude = const Value.absent(),
+                Value<double?> lastLongitude = const Value.absent(),
+                Value<double?> lastAccuracyMeters = const Value.absent(),
+                Value<String?> recoveryBoundaryPointId = const Value.absent(),
+                Value<DateTime> updatedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingSessionRowsCompanion.insert(
+                id: id,
+                startedAt: startedAt,
+                state: state,
+                inclusion: inclusion,
+                revision: revision,
+                currentSegmentId: currentSegmentId,
+                lastPointId: lastPointId,
+                lastObservedAt: lastObservedAt,
+                lastLatitude: lastLatitude,
+                lastLongitude: lastLongitude,
+                lastAccuracyMeters: lastAccuracyMeters,
+                recoveryBoundaryPointId: recoveryBoundaryPointId,
+                updatedAt: updatedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$WalkingSessionRowsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $WalkingSessionRowsTable,
+      WalkingSessionRow,
+      $$WalkingSessionRowsTableFilterComposer,
+      $$WalkingSessionRowsTableOrderingComposer,
+      $$WalkingSessionRowsTableAnnotationComposer,
+      $$WalkingSessionRowsTableCreateCompanionBuilder,
+      $$WalkingSessionRowsTableUpdateCompanionBuilder,
+      (
+        WalkingSessionRow,
+        BaseReferences<
+          _$AppDatabase,
+          $WalkingSessionRowsTable,
+          WalkingSessionRow
+        >,
+      ),
+      WalkingSessionRow,
+      PrefetchHooks Function()
+    >;
+typedef $$WalkingSegmentRowsTableCreateCompanionBuilder =
+    WalkingSegmentRowsCompanion Function({
+      required String id,
+      required String sessionId,
+      required DateTime startedAt,
+      Value<DateTime?> endedAt,
+      Value<int> rowid,
+    });
+typedef $$WalkingSegmentRowsTableUpdateCompanionBuilder =
+    WalkingSegmentRowsCompanion Function({
+      Value<String> id,
+      Value<String> sessionId,
+      Value<DateTime> startedAt,
+      Value<DateTime?> endedAt,
+      Value<int> rowid,
+    });
+
+class $$WalkingSegmentRowsTableFilterComposer
+    extends Composer<_$AppDatabase, $WalkingSegmentRowsTable> {
+  $$WalkingSegmentRowsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sessionId => $composableBuilder(
+    column: $table.sessionId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$WalkingSegmentRowsTableOrderingComposer
+    extends Composer<_$AppDatabase, $WalkingSegmentRowsTable> {
+  $$WalkingSegmentRowsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sessionId => $composableBuilder(
+    column: $table.sessionId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get startedAt => $composableBuilder(
+    column: $table.startedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get endedAt => $composableBuilder(
+    column: $table.endedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$WalkingSegmentRowsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $WalkingSegmentRowsTable> {
+  $$WalkingSegmentRowsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get sessionId =>
+      $composableBuilder(column: $table.sessionId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get startedAt =>
+      $composableBuilder(column: $table.startedAt, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get endedAt =>
+      $composableBuilder(column: $table.endedAt, builder: (column) => column);
+}
+
+class $$WalkingSegmentRowsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $WalkingSegmentRowsTable,
+          WalkingSegmentRow,
+          $$WalkingSegmentRowsTableFilterComposer,
+          $$WalkingSegmentRowsTableOrderingComposer,
+          $$WalkingSegmentRowsTableAnnotationComposer,
+          $$WalkingSegmentRowsTableCreateCompanionBuilder,
+          $$WalkingSegmentRowsTableUpdateCompanionBuilder,
+          (
+            WalkingSegmentRow,
+            BaseReferences<
+              _$AppDatabase,
+              $WalkingSegmentRowsTable,
+              WalkingSegmentRow
+            >,
+          ),
+          WalkingSegmentRow,
+          PrefetchHooks Function()
+        > {
+  $$WalkingSegmentRowsTableTableManager(
+    _$AppDatabase db,
+    $WalkingSegmentRowsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$WalkingSegmentRowsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$WalkingSegmentRowsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$WalkingSegmentRowsTableAnnotationComposer(
+                $db: db,
+                $table: table,
+              ),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> sessionId = const Value.absent(),
+                Value<DateTime> startedAt = const Value.absent(),
+                Value<DateTime?> endedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingSegmentRowsCompanion(
+                id: id,
+                sessionId: sessionId,
+                startedAt: startedAt,
+                endedAt: endedAt,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String sessionId,
+                required DateTime startedAt,
+                Value<DateTime?> endedAt = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingSegmentRowsCompanion.insert(
+                id: id,
+                sessionId: sessionId,
+                startedAt: startedAt,
+                endedAt: endedAt,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$WalkingSegmentRowsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $WalkingSegmentRowsTable,
+      WalkingSegmentRow,
+      $$WalkingSegmentRowsTableFilterComposer,
+      $$WalkingSegmentRowsTableOrderingComposer,
+      $$WalkingSegmentRowsTableAnnotationComposer,
+      $$WalkingSegmentRowsTableCreateCompanionBuilder,
+      $$WalkingSegmentRowsTableUpdateCompanionBuilder,
+      (
+        WalkingSegmentRow,
+        BaseReferences<
+          _$AppDatabase,
+          $WalkingSegmentRowsTable,
+          WalkingSegmentRow
+        >,
+      ),
+      WalkingSegmentRow,
+      PrefetchHooks Function()
+    >;
+typedef $$WalkingPointRowsTableCreateCompanionBuilder =
+    WalkingPointRowsCompanion Function({
+      required String id,
+      required String sessionId,
+      required String segmentId,
+      required DateTime observedAt,
+      required double latitude,
+      required double longitude,
+      required double accuracyMeters,
+      Value<int> rowid,
+    });
+typedef $$WalkingPointRowsTableUpdateCompanionBuilder =
+    WalkingPointRowsCompanion Function({
+      Value<String> id,
+      Value<String> sessionId,
+      Value<String> segmentId,
+      Value<DateTime> observedAt,
+      Value<double> latitude,
+      Value<double> longitude,
+      Value<double> accuracyMeters,
+      Value<int> rowid,
+    });
+
+class $$WalkingPointRowsTableFilterComposer
+    extends Composer<_$AppDatabase, $WalkingPointRowsTable> {
+  $$WalkingPointRowsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get sessionId => $composableBuilder(
+    column: $table.sessionId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get segmentId => $composableBuilder(
+    column: $table.segmentId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get observedAt => $composableBuilder(
+    column: $table.observedAt,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get latitude => $composableBuilder(
+    column: $table.latitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get longitude => $composableBuilder(
+    column: $table.longitude,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<double> get accuracyMeters => $composableBuilder(
+    column: $table.accuracyMeters,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$WalkingPointRowsTableOrderingComposer
+    extends Composer<_$AppDatabase, $WalkingPointRowsTable> {
+  $$WalkingPointRowsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<String> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get sessionId => $composableBuilder(
+    column: $table.sessionId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get segmentId => $composableBuilder(
+    column: $table.segmentId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get observedAt => $composableBuilder(
+    column: $table.observedAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get latitude => $composableBuilder(
+    column: $table.latitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get longitude => $composableBuilder(
+    column: $table.longitude,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<double> get accuracyMeters => $composableBuilder(
+    column: $table.accuracyMeters,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$WalkingPointRowsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $WalkingPointRowsTable> {
+  $$WalkingPointRowsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<String> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get sessionId =>
+      $composableBuilder(column: $table.sessionId, builder: (column) => column);
+
+  GeneratedColumn<String> get segmentId =>
+      $composableBuilder(column: $table.segmentId, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get observedAt => $composableBuilder(
+    column: $table.observedAt,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<double> get latitude =>
+      $composableBuilder(column: $table.latitude, builder: (column) => column);
+
+  GeneratedColumn<double> get longitude =>
+      $composableBuilder(column: $table.longitude, builder: (column) => column);
+
+  GeneratedColumn<double> get accuracyMeters => $composableBuilder(
+    column: $table.accuracyMeters,
+    builder: (column) => column,
+  );
+}
+
+class $$WalkingPointRowsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $WalkingPointRowsTable,
+          WalkingPointRow,
+          $$WalkingPointRowsTableFilterComposer,
+          $$WalkingPointRowsTableOrderingComposer,
+          $$WalkingPointRowsTableAnnotationComposer,
+          $$WalkingPointRowsTableCreateCompanionBuilder,
+          $$WalkingPointRowsTableUpdateCompanionBuilder,
+          (
+            WalkingPointRow,
+            BaseReferences<
+              _$AppDatabase,
+              $WalkingPointRowsTable,
+              WalkingPointRow
+            >,
+          ),
+          WalkingPointRow,
+          PrefetchHooks Function()
+        > {
+  $$WalkingPointRowsTableTableManager(
+    _$AppDatabase db,
+    $WalkingPointRowsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$WalkingPointRowsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$WalkingPointRowsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$WalkingPointRowsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<String> id = const Value.absent(),
+                Value<String> sessionId = const Value.absent(),
+                Value<String> segmentId = const Value.absent(),
+                Value<DateTime> observedAt = const Value.absent(),
+                Value<double> latitude = const Value.absent(),
+                Value<double> longitude = const Value.absent(),
+                Value<double> accuracyMeters = const Value.absent(),
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingPointRowsCompanion(
+                id: id,
+                sessionId: sessionId,
+                segmentId: segmentId,
+                observedAt: observedAt,
+                latitude: latitude,
+                longitude: longitude,
+                accuracyMeters: accuracyMeters,
+                rowid: rowid,
+              ),
+          createCompanionCallback:
+              ({
+                required String id,
+                required String sessionId,
+                required String segmentId,
+                required DateTime observedAt,
+                required double latitude,
+                required double longitude,
+                required double accuracyMeters,
+                Value<int> rowid = const Value.absent(),
+              }) => WalkingPointRowsCompanion.insert(
+                id: id,
+                sessionId: sessionId,
+                segmentId: segmentId,
+                observedAt: observedAt,
+                latitude: latitude,
+                longitude: longitude,
+                accuracyMeters: accuracyMeters,
+                rowid: rowid,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$WalkingPointRowsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $WalkingPointRowsTable,
+      WalkingPointRow,
+      $$WalkingPointRowsTableFilterComposer,
+      $$WalkingPointRowsTableOrderingComposer,
+      $$WalkingPointRowsTableAnnotationComposer,
+      $$WalkingPointRowsTableCreateCompanionBuilder,
+      $$WalkingPointRowsTableUpdateCompanionBuilder,
+      (
+        WalkingPointRow,
+        BaseReferences<_$AppDatabase, $WalkingPointRowsTable, WalkingPointRow>,
+      ),
+      WalkingPointRow,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -1937,4 +4361,10 @@ class $AppDatabaseManager {
       $$ProfileDraftRowsTableTableManager(_db, _db.profileDraftRows);
   $$SettingsRowsTableTableManager get settingsRows =>
       $$SettingsRowsTableTableManager(_db, _db.settingsRows);
+  $$WalkingSessionRowsTableTableManager get walkingSessionRows =>
+      $$WalkingSessionRowsTableTableManager(_db, _db.walkingSessionRows);
+  $$WalkingSegmentRowsTableTableManager get walkingSegmentRows =>
+      $$WalkingSegmentRowsTableTableManager(_db, _db.walkingSegmentRows);
+  $$WalkingPointRowsTableTableManager get walkingPointRows =>
+      $$WalkingPointRowsTableTableManager(_db, _db.walkingPointRows);
 }

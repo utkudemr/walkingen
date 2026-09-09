@@ -60,4 +60,58 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileSaveFailed => 'Profile could not be saved.';
+
+  @override
+  String get walkStart => 'Start walking';
+
+  @override
+  String get walkActive => 'Walk in progress';
+
+  @override
+  String get walkPause => 'Pause walking';
+
+  @override
+  String get walkPaused => 'Walk paused';
+
+  @override
+  String get walkResume => 'Resume walking';
+
+  @override
+  String get walkFinish => 'Finish walk';
+
+  @override
+  String get walkFinishTitle => 'Finish this walk?';
+
+  @override
+  String get walkFinishCancel => 'Cancel';
+
+  @override
+  String get walkFinishConfirm => 'Finish';
+
+  @override
+  String get walkActionFailed => 'The walking action could not be completed.';
+
+  @override
+  String get walkInterrupted => 'The walk was interrupted.';
+
+  @override
+  String get walkNotificationText => 'Walking is active.';
+
+  @override
+  String walkDistance(Object kilometers) {
+    return 'Distance: $kilometers km';
+  }
+
+  @override
+  String walkSteps(Object steps) {
+    return 'Steps: $steps';
+  }
+
+  @override
+  String historyDuration(Object duration) {
+    return 'Duration: $duration';
+  }
+
+  @override
+  String get historyCompleted => 'Completed';
 }
