@@ -28,6 +28,7 @@ Future<void> main() async {
     final seconds = (value.inSeconds % 60).toString().padLeft(2, '0');
     return '$hours:$minutes:$seconds';
   }
+
   String notificationMetrics(Duration elapsed, double distance, int steps) =>
       '${formatDuration(elapsed)} · '
       '${notificationL10n.walkDistance((distance / 1000).toStringAsFixed(2))} · '
@@ -157,11 +158,8 @@ class _AppShellState extends State<AppShell> {
     ];
 
     return Scaffold(
-      body:
-          _selectedIndex == 0 && widget.walkingCoordinator != null
-          ? WalkingHomePage(
-              coordinator: widget.walkingCoordinator!,
-            )
+      body: _selectedIndex == 0 && widget.walkingCoordinator != null
+          ? WalkingHomePage(coordinator: widget.walkingCoordinator!)
           : _selectedIndex == 1 && widget.walkingRepository != null
           ? WalkingHistoryPage(repository: widget.walkingRepository!)
           : _selectedIndex == 2 && widget.repository != null

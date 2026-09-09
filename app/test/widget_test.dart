@@ -45,7 +45,10 @@ void main() {
   ) async {
     await tester.pumpWidget(const WalkingenApp(locale: Locale('en')));
 
-    expect(find.text('Your walking overview will appear here.'), findsOneWidget);
+    expect(
+      find.text('Your walking overview will appear here.'),
+      findsOneWidget,
+    );
     expect(find.text('Ana Sayfa'), findsNothing);
   });
 
@@ -95,7 +98,10 @@ void main() {
     );
 
     expect(tester.takeException(), isNull);
-    expect(find.text('Your walking overview will appear here.'), findsOneWidget);
+    expect(
+      find.text('Your walking overview will appear here.'),
+      findsOneWidget,
+    );
   });
 
   testWidgets('navigation has localized semantics and 48dp targets', (

@@ -21,13 +21,10 @@ class PedometerStepSource implements StepTrackingSource {
   @override
   Future<void> start() async {
     await _subscription?.cancel();
-    _subscription = _stepChannel.receiveBroadcastStream().listen(
-      (_) {
-        _count++;
-        _steps.add(_count);
-      },
-      onError: _steps.addError,
-    );
+    _subscription = _stepChannel.receiveBroadcastStream().listen((_) {
+      _count++;
+      _steps.add(_count);
+    }, onError: _steps.addError);
   }
 
   @override

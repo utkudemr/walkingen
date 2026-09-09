@@ -90,7 +90,10 @@ void main() {
     addTearDown(coordinator.dispose);
 
     final startedAt = DateTime.utc(2026, 8, 29, 20);
-    await coordinator.start(sessionId: 'session-gps-only-start', startedAt: startedAt);
+    await coordinator.start(
+      sessionId: 'session-gps-only-start',
+      startedAt: startedAt,
+    );
     source.emit(
       LocationObservation(
         id: 'gps-after-step-start-error',
@@ -104,7 +107,10 @@ void main() {
 
     final session = await repository.loadOpenSession();
     expect(session?.state, WalkingSessionState.active);
-    expect(session?.segments.single.points.single.id, 'gps-after-step-start-error');
+    expect(
+      session?.segments.single.points.single.id,
+      'gps-after-step-start-error',
+    );
   });
   test('updates the notification when a session starts', () async {
     final database = AppDatabase.inMemory();
