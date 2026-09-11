@@ -128,6 +128,30 @@ abstract class AppLocalizations {
   /// **'Your completed walks will appear here.'**
   String get historyEmpty;
 
+  /// No description provided for @historyFilterDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter by date'**
+  String get historyFilterDate;
+
+  /// No description provided for @historyClearFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear date filter'**
+  String get historyClearFilter;
+
+  /// No description provided for @historySelectedDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Showing walks for {date}'**
+  String historySelectedDate(Object date);
+
+  /// No description provided for @historyNoWalksForDate.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed walks on this date.'**
+  String get historyNoWalksForDate;
+
   /// No description provided for @profileTab.
   ///
   /// In en, this message translates to:

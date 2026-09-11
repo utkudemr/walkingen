@@ -25,6 +25,20 @@ class AppLocalizationsTr extends AppLocalizations {
   String get historyEmpty => 'Tamamlanan yürüyüşlerin burada görünecek.';
 
   @override
+  String get historyFilterDate => 'Tarihe göre filtrele';
+
+  @override
+  String get historyClearFilter => 'Tarih filtresini temizle';
+
+  @override
+  String historySelectedDate(Object date) {
+    return '$date tarihindeki yürüyüşler';
+  }
+
+  @override
+  String get historyNoWalksForDate => 'Bu tarihte tamamlanan yürüyüş yok.';
+
+  @override
   String get profileTab => 'Profil';
 
   @override
