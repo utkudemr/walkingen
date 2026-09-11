@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:drift/drift.dart';
 import 'package:walkingen/database/app_database.dart';
 import 'package:walkingen/walking/location_observation.dart';
 import 'package:walkingen/walking/walking_session.dart';
@@ -24,6 +25,60 @@ void main() {
     expect(reloaded?.revision, 0);
     expect(reloaded?.segments.single.id, 'session-1-segment-1');
   });
+
+  test(
+    'filters completed history by the requested local calendar day',
+    () async {
+      final database = AppDatabase.inMemory();
+      addTearDown(database.close);
+      final repository = WalkingSessionRepository(database);
+      final startedAt = DateTime.now().toUtc().subtract(
+        const Duration(days: 2),
+      );
+
+      await repository.startSession(id: 'session-old', startedAt: startedAt);
+      await repository.finishSession(
+        sessionId: 'session-old',
+        expectedRevision: 0,
+        confirmed: true,
+      );
+      final now = DateTime.now();
+      final oldCompletedAt = DateTime(
+        now.year,
+        now.month,
+        now.day - 2,
+        12,
+      ).toUtc();
+      await (database.update(database.walkingSessionRows)
+            ..where((row) => row.id.equals('session-old')))
+          .write(WalkingSessionRowsCompanion(updatedAt: Value(oldCompletedAt)));
+      await repository.startSession(
+        id: 'session-target',
+        startedAt: DateTime.now().toUtc().subtract(const Duration(days: 1)),
+      );
+      await repository.finishSession(
+        sessionId: 'session-target',
+        expectedRevision: 0,
+        confirmed: true,
+      );
+      final targetCompletedAt = DateTime(
+        now.year,
+        now.month,
+        now.day - 1,
+        12,
+      ).toUtc();
+      await (database.update(
+        database.walkingSessionRows,
+      )..where((row) => row.id.equals('session-target'))).write(
+        WalkingSessionRowsCompanion(updatedAt: Value(targetCompletedAt)),
+      );
+
+      final targetDay = DateTime(now.year, now.month, now.day - 1);
+      final history = await repository.loadCompletedHistory(day: targetDay);
+
+      expect(history.map((entry) => entry.id), ['session-target']);
+    },
+  );
 
   test('lists completed walks with duration and distance', () async {
     final database = AppDatabase.inMemory();

@@ -25,6 +25,20 @@ class AppLocalizationsEn extends AppLocalizations {
   String get historyEmpty => 'Your completed walks will appear here.';
 
   @override
+  String get historyFilterDate => 'Filter by date';
+
+  @override
+  String get historyClearFilter => 'Clear date filter';
+
+  @override
+  String historySelectedDate(Object date) {
+    return 'Showing walks for $date';
+  }
+
+  @override
+  String get historyNoWalksForDate => 'No completed walks on this date.';
+
+  @override
   String get profileTab => 'Profile';
 
   @override

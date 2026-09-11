@@ -112,14 +112,25 @@ class WalkingSessionRepository {
     return _loadSession(row);
   }
 
-  Future<List<WalkingHistoryEntry>> loadCompletedHistory() async {
+  Future<List<WalkingHistoryEntry>> loadCompletedHistory({
+    DateTime? day,
+  }) async {
+    final query = _database.select(
+      _database.walkingSessionRows,
+    )..where((table) => table.state.equals(WalkingSessionState.completed.name));
+    if (day != null) {
+      final localStart = DateTime(day.year, day.month, day.day);
+      final localEnd = DateTime(day.year, day.month, day.day + 1);
+      final startUtc = localStart.toUtc();
+      final endUtc = localEnd.toUtc();
+      query.where(
+        (table) =>
+            table.updatedAt.isBiggerOrEqualValue(startUtc) &
+            table.updatedAt.isSmallerThanValue(endUtc),
+      );
+    }
     final rows =
-        await (_database.select(_database.walkingSessionRows)
-              ..where(
-                (table) =>
-                    table.state.equals(WalkingSessionState.completed.name),
-              )
-              ..orderBy([(table) => OrderingTerm.desc(table.updatedAt)]))
+        await (query..orderBy([(table) => OrderingTerm.desc(table.updatedAt)]))
             .get();
     final entries = <WalkingHistoryEntry>[];
     for (final row in rows) {
