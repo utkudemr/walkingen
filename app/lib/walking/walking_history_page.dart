@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:walkingen/l10n/generated/app_localizations.dart';
+import 'package:walkingen/walking/walking_history_detail_page.dart';
 import 'package:walkingen/walking/walking_session_repository.dart';
 
 class WalkingHistoryPage extends StatefulWidget {
@@ -121,6 +122,14 @@ class _WalkingHistoryPageState extends State<WalkingHistoryPage> {
                   final entry = entries[index];
                   return Card(
                     child: ListTile(
+                      onTap: () => Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (_) => WalkingHistoryDetailPage(
+                            repository: widget.repository,
+                            sessionId: entry.id,
+                          ),
+                        ),
+                      ),
                       leading: const Icon(Icons.check_circle_outline),
                       title: Text(_formatDate(entry.completedAt)),
                       subtitle: Text(

@@ -152,6 +152,42 @@ abstract class AppLocalizations {
   /// **'No completed walks on this date.'**
   String get historyNoWalksForDate;
 
+  /// No description provided for @historyDetailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk details'**
+  String get historyDetailTitle;
+
+  /// No description provided for @historyRouteTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Route'**
+  String get historyRouteTitle;
+
+  /// No description provided for @historyRouteUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No GPS route was recorded for this walk.'**
+  String get historyRouteUnavailable;
+
+  /// No description provided for @historyDetailLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk details could not be loaded.'**
+  String get historyDetailLoadFailed;
+
+  /// No description provided for @historyDetailUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'This completed walk is no longer available.'**
+  String get historyDetailUnavailable;
+
+  /// No description provided for @historyRouteAttribution.
+  ///
+  /// In en, this message translates to:
+  /// **'© OpenStreetMap contributors'**
+  String get historyRouteAttribution;
+
   /// No description provided for @profileTab.
   ///
   /// In en, this message translates to:

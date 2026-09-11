@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:drift/drift.dart';
+import 'package:drift/drift.dart' show Value;
 import 'package:walkingen/database/app_database.dart';
 import 'package:walkingen/walking/location_observation.dart';
 import 'package:walkingen/walking/walking_session.dart';
@@ -77,6 +77,66 @@ void main() {
       final history = await repository.loadCompletedHistory(day: targetDay);
 
       expect(history.map((entry) => entry.id), ['session-target']);
+    },
+  );
+
+  test(
+    'loads completed history detail with ordered disconnected segments',
+    () async {
+      final database = AppDatabase.inMemory();
+      addTearDown(database.close);
+      final repository = WalkingSessionRepository(database);
+      final startedAt = DateTime.utc(2026, 8, 29, 20);
+
+      await repository.startSession(id: 'session-detail', startedAt: startedAt);
+      await repository.acceptPoint(
+        sessionId: 'session-detail',
+        expectedRevision: 0,
+        observation: LocationObservation(
+          id: 'point-1',
+          observedAt: startedAt.add(const Duration(minutes: 1)),
+          latitude: 41,
+          longitude: 29,
+          accuracyMeters: 5,
+        ),
+      );
+      await repository.markInterrupted(
+        sessionId: 'session-detail',
+        expectedRevision: 1,
+      );
+      await repository.resumeInterrupted(
+        sessionId: 'session-detail',
+        expectedRevision: 2,
+        confirmed: true,
+        resumedAt: startedAt.add(const Duration(hours: 1)),
+      );
+      await repository.acceptPoint(
+        sessionId: 'session-detail',
+        expectedRevision: 3,
+        observation: LocationObservation(
+          id: 'point-2',
+          observedAt: startedAt.add(const Duration(hours: 1, minutes: 1)),
+          latitude: 42,
+          longitude: 30,
+          accuracyMeters: 5,
+        ),
+      );
+      await repository.finishSession(
+        sessionId: 'session-detail',
+        expectedRevision: 4,
+        confirmed: true,
+      );
+
+      final detail = await repository.loadCompletedHistoryDetail(
+        'session-detail',
+      );
+
+      expect(detail, isNotNull);
+      final loaded = detail!;
+      expect(loaded.entry.id, 'session-detail');
+      expect(loaded.segments, hasLength(2));
+      expect(loaded.segments[0].points.map((point) => point.id), ['point-1']);
+      expect(loaded.segments[1].points.map((point) => point.id), ['point-2']);
     },
   );
 

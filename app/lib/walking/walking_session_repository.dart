@@ -23,6 +23,13 @@ class WalkingHistoryEntry {
   final WalkingSessionState state;
 }
 
+class WalkingHistoryDetail {
+  const WalkingHistoryDetail({required this.entry, required this.segments});
+
+  final WalkingHistoryEntry entry;
+  final List<WalkingSegment> segments;
+}
+
 class OpenWalkingSessionException implements Exception {
   const OpenWalkingSessionException();
 }
@@ -149,6 +156,29 @@ class WalkingSessionRepository {
       );
     }
     return List.unmodifiable(entries);
+  }
+
+  Future<WalkingHistoryDetail?> loadCompletedHistoryDetail(String id) async {
+    final row =
+        await (_database.select(_database.walkingSessionRows)..where(
+              (table) =>
+                  table.id.equals(id) &
+                  table.state.equals(WalkingSessionState.completed.name),
+            ))
+            .getSingleOrNull();
+    if (row == null) return null;
+    final session = await _loadSession(row);
+    final completedAt = row.updatedAt.toUtc();
+    final duration = completedAt.difference(session.startedAt);
+    final entry = WalkingHistoryEntry(
+      id: session.id,
+      startedAt: session.startedAt,
+      completedAt: completedAt,
+      duration: duration.isNegative ? Duration.zero : duration,
+      distanceMeters: _sessionDistance(session),
+      state: session.state,
+    );
+    return WalkingHistoryDetail(entry: entry, segments: session.segments);
   }
 
   double _sessionDistance(WalkingSession session) {

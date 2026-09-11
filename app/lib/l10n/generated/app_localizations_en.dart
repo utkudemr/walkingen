@@ -39,6 +39,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get historyNoWalksForDate => 'No completed walks on this date.';
 
   @override
+  String get historyDetailTitle => 'Walk details';
+
+  @override
+  String get historyRouteTitle => 'Route';
+
+  @override
+  String get historyRouteUnavailable =>
+      'No GPS route was recorded for this walk.';
+
+  @override
+  String get historyDetailLoadFailed => 'Walk details could not be loaded.';
+
+  @override
+  String get historyDetailUnavailable =>
+      'This completed walk is no longer available.';
+
+  @override
+  String get historyRouteAttribution => '© OpenStreetMap contributors';
+
+  @override
   String get profileTab => 'Profile';
 
   @override

@@ -129,9 +129,10 @@ Every newly created session starts with `needsReview` inclusion. The first produ
 - No test or implementation connects points across a missing interval.
 - Navigation and widget disposal do not change lifecycle state.
 
+- History detail route rendering uses the persisted ordered points grouped by segment. Each continuity segment is rendered independently; points from interrupted segments are never joined by a synthetic line.
+
 ## Out of scope
 
-- Maps and route rendering
 - Distance/calorie algorithms beyond the minimum point persistence and approximate step-distance fallback defined for this slice
 - Notifications copy and full permission UX beyond the service boundary
 - Automatic reboot continuation
