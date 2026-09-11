@@ -60,4 +60,58 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileSaveFailed => 'Profil kaydedilemedi.';
+
+  @override
+  String get walkStart => 'Yürüyüşü başlat';
+
+  @override
+  String get walkActive => 'Yürüyüş devam ediyor';
+
+  @override
+  String get walkPause => 'Yürüyüşü duraklat';
+
+  @override
+  String get walkPaused => 'Yürüyüş duraklatıldı';
+
+  @override
+  String get walkResume => 'Yürüyüşe devam et';
+
+  @override
+  String get walkFinish => 'Yürüyüşü bitir';
+
+  @override
+  String get walkFinishTitle => 'Yürüyüşü bitirmek istiyor musun?';
+
+  @override
+  String get walkFinishCancel => 'Vazgeç';
+
+  @override
+  String get walkFinishConfirm => 'Bitir';
+
+  @override
+  String get walkActionFailed => 'Yürüyüş işlemi tamamlanamadı.';
+
+  @override
+  String get walkInterrupted => 'Yürüyüş kesintiye uğradı.';
+
+  @override
+  String get walkNotificationText => 'Yürüyüş devam ediyor.';
+
+  @override
+  String walkDistance(Object kilometers) {
+    return 'Mesafe: $kilometers km';
+  }
+
+  @override
+  String walkSteps(Object steps) {
+    return 'Adım: $steps';
+  }
+
+  @override
+  String historyDuration(Object duration) {
+    return 'Süre: $duration';
+  }
+
+  @override
+  String get historyCompleted => 'Tamamlandı';
 }

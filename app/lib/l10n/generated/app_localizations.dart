@@ -199,6 +199,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile could not be saved.'**
   String get profileSaveFailed;
+
+  /// No description provided for @walkStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start walking'**
+  String get walkStart;
+
+  /// No description provided for @walkActive.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk in progress'**
+  String get walkActive;
+
+  /// No description provided for @walkPause.
+  ///
+  /// In en, this message translates to:
+  /// **'Pause walking'**
+  String get walkPause;
+
+  /// No description provided for @walkPaused.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk paused'**
+  String get walkPaused;
+
+  /// No description provided for @walkResume.
+  ///
+  /// In en, this message translates to:
+  /// **'Resume walking'**
+  String get walkResume;
+
+  /// No description provided for @walkFinish.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish walk'**
+  String get walkFinish;
+
+  /// No description provided for @walkFinishTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish this walk?'**
+  String get walkFinishTitle;
+
+  /// No description provided for @walkFinishCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get walkFinishCancel;
+
+  /// No description provided for @walkFinishConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Finish'**
+  String get walkFinishConfirm;
+
+  /// No description provided for @walkActionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'The walking action could not be completed.'**
+  String get walkActionFailed;
+
+  /// No description provided for @walkInterrupted.
+  ///
+  /// In en, this message translates to:
+  /// **'The walk was interrupted.'**
+  String get walkInterrupted;
+
+  /// No description provided for @walkNotificationText.
+  ///
+  /// In en, this message translates to:
+  /// **'Walking is active.'**
+  String get walkNotificationText;
+
+  /// No description provided for @walkDistance.
+  ///
+  /// In en, this message translates to:
+  /// **'Distance: {kilometers} km'**
+  String walkDistance(Object kilometers);
+
+  /// No description provided for @walkSteps.
+  ///
+  /// In en, this message translates to:
+  /// **'Steps: {steps}'**
+  String walkSteps(Object steps);
+
+  /// No description provided for @historyDuration.
+  ///
+  /// In en, this message translates to:
+  /// **'Duration: {duration}'**
+  String historyDuration(Object duration);
+
+  /// No description provided for @historyCompleted.
+  ///
+  /// In en, this message translates to:
+  /// **'Completed'**
+  String get historyCompleted;
 }
 
 class _AppLocalizationsDelegate

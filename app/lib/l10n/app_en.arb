@@ -16,5 +16,21 @@
   "profileSaved": "Profile saved.",
   "profileRequired": "Please enter a valid value.",
   "profileLoadFailed": "Profile could not be loaded.",
-  "profileSaveFailed": "Profile could not be saved."
+  "profileSaveFailed": "Profile could not be saved.",
+  "walkStart": "Start walking",
+  "walkActive": "Walk in progress",
+  "walkPause": "Pause walking",
+  "walkPaused": "Walk paused",
+  "walkResume": "Resume walking",
+  "walkFinish": "Finish walk",
+  "walkFinishTitle": "Finish this walk?",
+  "walkFinishCancel": "Cancel",
+  "walkFinishConfirm": "Finish",
+  "walkActionFailed": "The walking action could not be completed.",
+  "walkInterrupted": "The walk was interrupted.",
+  "walkNotificationText": "Walking is active.",
+  "walkDistance": "Distance: {kilometers} km",
+  "walkSteps": "Steps: {steps}",
+  "historyDuration": "Duration: {duration}",
+  "historyCompleted": "Completed"
 }

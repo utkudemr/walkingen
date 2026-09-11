@@ -16,5 +16,21 @@
   "profileSaved": "Profil kaydedildi.",
   "profileRequired": "Lütfen geçerli bir değer gir.",
   "profileLoadFailed": "Profil yüklenemedi.",
-  "profileSaveFailed": "Profil kaydedilemedi."
+  "profileSaveFailed": "Profil kaydedilemedi.",
+  "walkStart": "Yürüyüşü başlat",
+  "walkActive": "Yürüyüş devam ediyor",
+  "walkPause": "Yürüyüşü duraklat",
+  "walkPaused": "Yürüyüş duraklatıldı",
+  "walkResume": "Yürüyüşe devam et",
+  "walkFinish": "Yürüyüşü bitir",
+  "walkFinishTitle": "Yürüyüşü bitirmek istiyor musun?",
+  "walkFinishCancel": "Vazgeç",
+  "walkFinishConfirm": "Bitir",
+  "walkActionFailed": "Yürüyüş işlemi tamamlanamadı.",
+  "walkInterrupted": "Yürüyüş kesintiye uğradı.",
+  "walkNotificationText": "Yürüyüş devam ediyor.",
+  "walkDistance": "Mesafe: {kilometers} km",
+  "walkSteps": "Adım: {steps}",
+  "historyDuration": "Süre: {duration}",
+  "historyCompleted": "Tamamlandı"
 }

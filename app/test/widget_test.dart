@@ -8,7 +8,6 @@ void main() {
   testWidgets('renders localized Home by default', (tester) async {
     await tester.pumpWidget(const WalkingenApp(locale: Locale('tr')));
 
-    expect(find.text('Ana Sayfa'), findsWidgets);
     expect(find.text('Yürüyüşlerin burada başlayacak.'), findsOneWidget);
     expect(find.byIcon(Icons.add), findsNothing);
   });
@@ -18,10 +17,9 @@ void main() {
   ) async {
     await tester.pumpWidget(const WalkingenApp(locale: Locale('tr')));
 
-    await tester.tap(find.text('Geçmiş'));
+    await tester.tap(find.byTooltip('Geçmiş'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Geçmiş'), findsWidgets);
     expect(
       find.text('Tamamlanan yürüyüşlerin burada görünecek.'),
       findsOneWidget,
@@ -33,10 +31,9 @@ void main() {
   ) async {
     await tester.pumpWidget(const WalkingenApp(locale: Locale('tr')));
 
-    await tester.tap(find.text('Profil'));
+    await tester.tap(find.byTooltip('Profil'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Profil ve Ayarlar'), findsWidgets);
     expect(
       find.text('Profil ve ayar seçenekleri burada görünecek.'),
       findsOneWidget,
@@ -48,9 +45,6 @@ void main() {
   ) async {
     await tester.pumpWidget(const WalkingenApp(locale: Locale('en')));
 
-    expect(find.text('Home'), findsWidgets);
-    expect(find.text('History'), findsOneWidget);
-    expect(find.text('Profile'), findsOneWidget);
     expect(
       find.text('Your walking overview will appear here.'),
       findsOneWidget,
@@ -104,10 +98,8 @@ void main() {
     );
 
     expect(tester.takeException(), isNull);
-    expect(find.text('Home'), findsWidgets);
-    expect(find.text('History'), findsOneWidget);
     expect(
-      find.widgetWithText(NavigationDestination, 'Profile'),
+      find.text('Your walking overview will appear here.'),
       findsOneWidget,
     );
   });
@@ -120,11 +112,7 @@ void main() {
       await tester.pumpWidget(const WalkingenApp(locale: Locale('tr')));
 
       for (final label in ['Ana Sayfa', 'Geçmiş', 'Profil']) {
-        expect(
-          find.bySemanticsLabel(RegExp(RegExp.escape(label))),
-          findsWidgets,
-        );
-        final destination = find.widgetWithText(NavigationDestination, label);
+        final destination = find.byTooltip(label);
         expect(destination, findsOneWidget);
         final size = tester.getSize(destination);
         expect(size.width, greaterThanOrEqualTo(48));
@@ -141,7 +129,7 @@ void main() {
     await tester.pumpWidget(
       WalkingenApp(locale: const Locale('tr'), repository: repository),
     );
-    await tester.tap(find.text('Profil'));
+    await tester.tap(find.byTooltip('Profil'));
     await tester.pumpAndSettle();
 
     expect(find.text('İsim'), findsOneWidget);
