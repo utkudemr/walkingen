@@ -39,6 +39,26 @@ class AppLocalizationsTr extends AppLocalizations {
   String get historyNoWalksForDate => 'Bu tarihte tamamlanan yürüyüş yok.';
 
   @override
+  String get historyDetailTitle => 'Yürüyüş detayı';
+
+  @override
+  String get historyRouteTitle => 'Rota';
+
+  @override
+  String get historyRouteUnavailable =>
+      'Bu yürüyüş için GPS rotası kaydedilmedi.';
+
+  @override
+  String get historyDetailLoadFailed => 'Yürüyüş detayı yüklenemedi.';
+
+  @override
+  String get historyDetailUnavailable =>
+      'Bu tamamlanmış yürüyüş artık kullanılamıyor.';
+
+  @override
+  String get historyRouteAttribution => '© OpenStreetMap katkıcıları';
+
+  @override
   String get profileTab => 'Profil';
 
   @override

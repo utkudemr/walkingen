@@ -30,7 +30,7 @@ The initial MVP does not include:
 
 ## Privacy boundary
 
-Profile, settings, walks, route points, and drafts remain in the on-device database. Google Maps may process requests needed to render maps. Credentials, real route data, signing material, and local databases must never enter source control.
+- Route rendering is available in History details using OpenStreetMap tiles; tile requests may reveal the viewed map area to the tile service. Credentials, real route data, signing material, and local databases must never enter source control.
 
 ## Foundation slice
 
