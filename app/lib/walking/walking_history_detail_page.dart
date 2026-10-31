@@ -39,24 +39,35 @@ class _WalkingHistoryDetailPageState extends State<WalkingHistoryDetailPage> {
     return '$day.$month.${local.year} $hour:$minute';
   }
 
-  String _formatDuration(Duration duration) {
-    final hours = duration.inHours.toString().padLeft(2, '0');
-    final minutes = (duration.inMinutes % 60).toString().padLeft(2, '0');
-    return '$hours:$minutes';
-  }
-
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final background = dark ? const Color(0xFF1D282B) : const Color(0xFFE6EBE6);
+    final cardColor = dark ? const Color(0xFF283538) : const Color(0xFFF2F5EF);
+    final accent = dark ? const Color(0xFFA4C4AF) : const Color(0xFF416B60);
+    final primaryText = dark
+        ? const Color(0xFFE4E8E3)
+        : const Color(0xFF202F2C);
+    final secondaryText = dark
+        ? const Color(0xFFB0C1B7)
+        : const Color(0xFF50655B);
+    final outline = dark ? const Color(0xFF41504C) : const Color(0xFFBCCAC1);
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.historyDetailTitle)),
+      backgroundColor: background,
+      appBar: AppBar(
+        title: Text(l10n.historyDetailTitle),
+        backgroundColor: background,
+        foregroundColor: primaryText,
+        elevation: 0,
+      ),
       body: FutureBuilder<WalkingHistoryDetail?>(
         future: _detailFuture,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(child: Text(l10n.historyDetailLoadFailed));
           }
-          if (!snapshot.hasData) {
+          if (snapshot.connectionState != ConnectionState.done) {
             return const Center(child: CircularProgressIndicator());
           }
           final detail = snapshot.data;
@@ -65,12 +76,23 @@ class _WalkingHistoryDetailPageState extends State<WalkingHistoryDetailPage> {
           }
           return _DetailBody(
             detail: detail,
+            cardColor: cardColor,
+            accent: accent,
+            primaryText: primaryText,
+            secondaryText: secondaryText,
+            outline: outline,
             formatDate: _formatDate,
-            formatDuration: _formatDuration,
+            formatDuration: (duration) => l10n.historyDurationValue(
+              duration.inHours,
+              duration.inMinutes % 60,
+              duration.inSeconds % 60,
+            ),
             routeTitle: l10n.historyRouteTitle,
             routeUnavailable: l10n.historyRouteUnavailable,
             attribution: l10n.historyRouteAttribution,
             durationLabel: l10n.historyDuration,
+            startLabel: l10n.historyStart,
+            endLabel: l10n.historyEnd,
             distanceLabel: l10n.walkDistance,
           );
         },
@@ -82,22 +104,36 @@ class _WalkingHistoryDetailPageState extends State<WalkingHistoryDetailPage> {
 class _DetailBody extends StatelessWidget {
   const _DetailBody({
     required this.detail,
+    required this.cardColor,
+    required this.accent,
+    required this.primaryText,
+    required this.secondaryText,
+    required this.outline,
     required this.formatDate,
     required this.formatDuration,
     required this.routeTitle,
     required this.routeUnavailable,
     required this.attribution,
     required this.durationLabel,
+    required this.startLabel,
+    required this.endLabel,
     required this.distanceLabel,
   });
 
   final WalkingHistoryDetail detail;
+  final Color cardColor;
+  final Color accent;
+  final Color primaryText;
+  final Color secondaryText;
+  final Color outline;
   final String Function(DateTime) formatDate;
   final String Function(Duration) formatDuration;
   final String routeTitle;
   final String routeUnavailable;
   final String attribution;
   final String Function(String) durationLabel;
+  final String Function(String) startLabel;
+  final String Function(String) endLabel;
   final String Function(String) distanceLabel;
 
   @override
@@ -142,39 +178,71 @@ class _DetailBody extends StatelessWidget {
           );
 
     return ListView(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(22, 16, 22, 32),
       children: [
         Text(
-          formatDate(detail.entry.completedAt),
-          style: Theme.of(context).textTheme.titleLarge,
+          formatDate(detail.entry.startedAt),
+          style: TextStyle(color: accent, fontWeight: FontWeight.w600),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: 16),
         Wrap(
-          spacing: 12,
-          runSpacing: 8,
+          spacing: 10,
+          runSpacing: 10,
           children: [
-            Chip(
-              label: Text(durationLabel(formatDuration(detail.entry.duration))),
-            ),
-            Chip(
-              label: Text(
-                distanceLabel(
-                  (detail.entry.distanceMeters / 1000).toStringAsFixed(2),
-                ),
+            _MetricCard(
+              label: distanceLabel(
+                (detail.entry.distanceMeters / 1000).toStringAsFixed(2),
               ),
+              cardColor: cardColor,
+              outline: outline,
+              foreground: primaryText,
+            ),
+            _MetricCard(
+              label: durationLabel(formatDuration(detail.entry.duration)),
+              cardColor: cardColor,
+              outline: outline,
+              foreground: primaryText,
             ),
           ],
         ),
-        const SizedBox(height: 20),
-        Text(routeTitle, style: Theme.of(context).textTheme.titleMedium),
-        const SizedBox(height: 8),
+        const SizedBox(height: 24),
+        Text(
+          routeTitle,
+          style: Theme.of(context).textTheme.titleMedium
+              ?.copyWith(color: primaryText, fontWeight: FontWeight.w700),
+        ),
+        const SizedBox(height: 12),
         if (points.isEmpty)
-          SizedBox(height: 180, child: Center(child: Text(routeUnavailable)))
+          Container(
+            constraints: const BoxConstraints(minHeight: 240),
+            decoration: BoxDecoration(
+              color: cardColor,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(color: outline),
+            ),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.route_outlined, color: accent, size: 32),
+                    const SizedBox(height: 12),
+                    Text(
+                      routeUnavailable,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: secondaryText),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          )
         else
           SizedBox(
             height: 360,
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
+              borderRadius: BorderRadius.circular(20),
               child: FlutterMap(
                 options: mapOptions,
                 children: [
@@ -207,7 +275,58 @@ class _DetailBody extends StatelessWidget {
               ),
             ),
           ),
+        const SizedBox(height: 20),
+        Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: cardColor,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: outline),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                startLabel(formatDate(detail.entry.startedAt)),
+                style: TextStyle(color: secondaryText),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                endLabel(formatDate(detail.entry.completedAt)),
+                style: TextStyle(color: secondaryText),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
+}
+
+class _MetricCard extends StatelessWidget {
+  const _MetricCard({
+    required this.label,
+    required this.cardColor,
+    required this.outline,
+    required this.foreground,
+  });
+
+  final String label;
+  final Color cardColor;
+  final Color outline;
+  final Color foreground;
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+    decoration: BoxDecoration(
+      color: cardColor,
+      border: Border.all(color: outline),
+      borderRadius: BorderRadius.circular(16),
+    ),
+    child: Text(
+      label,
+      style: TextStyle(color: foreground, fontWeight: FontWeight.w600),
+    ),
+  );
 }

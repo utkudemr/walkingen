@@ -355,6 +355,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Completed'**
   String get historyCompleted;
+
+  /// No description provided for @historyLoadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Walk history could not be loaded.'**
+  String get historyLoadFailed;
+
+  /// No description provided for @historyStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start: {date}'**
+  String historyStart(Object date);
+
+  /// No description provided for @historyEnd.
+  ///
+  /// In en, this message translates to:
+  /// **'End: {date}'**
+  String historyEnd(Object date);
+
+  /// No description provided for @historyDurationValue.
+  ///
+  /// In en, this message translates to:
+  /// **'{hours} hr {minutes} min {seconds} sec'**
+  String historyDurationValue(Object hours, Object minutes, Object seconds);
 }
 
 class _AppLocalizationsDelegate

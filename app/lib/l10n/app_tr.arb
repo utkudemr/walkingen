@@ -42,5 +42,9 @@
   "walkDistance": "Mesafe: {kilometers} km",
   "walkSteps": "Adım: {steps}",
   "historyDuration": "Süre: {duration}",
-  "historyCompleted": "Tamamlandı"
+  "historyCompleted": "Tamamlandı",
+  "historyLoadFailed": "Yürüyüş geçmişi yüklenemedi.",
+  "historyStart": "Başlangıç: {date}",
+  "historyEnd": "Bitiş: {date}",
+  "historyDurationValue": "{hours} sa {minutes} dk {seconds} sn"
 }

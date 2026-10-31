@@ -148,4 +148,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get historyCompleted => 'Completed';
+
+  @override
+  String get historyLoadFailed => 'Walk history could not be loaded.';
+
+  @override
+  String historyStart(Object date) {
+    return 'Start: $date';
+  }
+
+  @override
+  String historyEnd(Object date) {
+    return 'End: $date';
+  }
+
+  @override
+  String historyDurationValue(Object hours, Object minutes, Object seconds) {
+    return '$hours hr $minutes min $seconds sec';
+  }
 }

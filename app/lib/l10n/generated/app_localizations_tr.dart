@@ -148,4 +148,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get historyCompleted => 'Tamamlandı';
+
+  @override
+  String get historyLoadFailed => 'Yürüyüş geçmişi yüklenemedi.';
+
+  @override
+  String historyStart(Object date) {
+    return 'Başlangıç: $date';
+  }
+
+  @override
+  String historyEnd(Object date) {
+    return 'Bitiş: $date';
+  }
+
+  @override
+  String historyDurationValue(Object hours, Object minutes, Object seconds) {
+    return '$hours sa $minutes dk $seconds sn';
+  }
 }

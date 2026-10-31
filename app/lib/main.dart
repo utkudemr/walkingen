@@ -147,6 +147,7 @@ class AppShell extends StatefulWidget {
 
 class _AppShellState extends State<AppShell> {
   int _selectedIndex = 0;
+  int _historyRefreshToken = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -158,17 +159,30 @@ class _AppShellState extends State<AppShell> {
     ];
 
     return Scaffold(
-      body: _selectedIndex == 0 && widget.walkingCoordinator != null
-          ? WalkingHomePage(coordinator: widget.walkingCoordinator!)
-          : _selectedIndex == 1 && widget.walkingRepository != null
-          ? WalkingHistoryPage(repository: widget.walkingRepository!)
-          : _selectedIndex == 2 && widget.repository != null
-          ? ProfilePage(repository: widget.repository!)
-          : Center(child: Text(messages[_selectedIndex])),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          widget.walkingCoordinator != null
+              ? WalkingHomePage(coordinator: widget.walkingCoordinator!)
+              : Center(child: Text(messages[0])),
+          widget.walkingRepository != null
+              ? WalkingHistoryPage(
+                  repository: widget.walkingRepository!,
+                  refreshToken: _historyRefreshToken,
+                )
+              : Center(child: Text(messages[1])),
+          widget.repository != null
+              ? ProfilePage(repository: widget.repository!)
+              : Center(child: Text(messages[2])),
+        ],
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) {
-          setState(() => _selectedIndex = index);
+          setState(() {
+            if (index == 1 && _selectedIndex != 1) _historyRefreshToken++;
+            _selectedIndex = index;
+          });
         },
         destinations: [
           NavigationDestination(

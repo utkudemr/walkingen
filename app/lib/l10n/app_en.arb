@@ -42,5 +42,9 @@
   "walkDistance": "Distance: {kilometers} km",
   "walkSteps": "Steps: {steps}",
   "historyDuration": "Duration: {duration}",
-  "historyCompleted": "Completed"
+  "historyCompleted": "Completed",
+  "historyLoadFailed": "Walk history could not be loaded.",
+  "historyStart": "Start: {date}",
+  "historyEnd": "End: {date}",
+  "historyDurationValue": "{hours} hr {minutes} min {seconds} sec"
 }
